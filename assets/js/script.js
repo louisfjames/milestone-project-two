@@ -19,9 +19,9 @@ $(document).ready(function () {
     // Search Bar Click Handler
     $searchBtn.on("click", function () { 
         const query = $searchBox.val().trim(); 
-        if (query === "") 
-            { $statusDiv.text("Please enter an artist name."); return; 
-
+        if (query === "") {
+            $statusDiv.text("Please enter an artist name."); 
+            return; 
         }
         
         $resultsDiv.empty();
