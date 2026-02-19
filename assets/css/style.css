@@ -1,0 +1,20 @@
+/* CSS variables */
+:root {
+    --primary-color: #000000; /* black */
+    --secondary-color: #ffffff; /* white */
+    --highlight-color: orange; /* red */
+    --secondary-highlight-color: yellow
+    ; /* orange */
+}
+
+/* Global styles */
+body {
+    color: var(--secondary-color);
+    background-color: var(--primary-color);
+}
+
+/* Buttons */
+.btn {
+    background-color: var(--highlight-color);
+    border-color: var(--secondary-highlight-color);
+}
