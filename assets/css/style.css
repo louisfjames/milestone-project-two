@@ -19,10 +19,21 @@ body {
     border-color: var(--secondary-highlight-color);
 }
 
+/* results-grid class */
+
 /* event-card class */
+.event-card {
+  display: flex;
+  gap: 15px;
+  padding: 50px;
+  border-radius: 20px;
+  border: 2px solid var(--secondary-color);
+  background: transparent;
+  align-items: center;
+}
 
 /* event-info class */
 
 /* event-meta class */
 
-/* results-grid class */
+/* event-card image class - to fix on smaller screens */

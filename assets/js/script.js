@@ -79,7 +79,7 @@ $(document).ready(function () {
             .addClass("event-meta")
             .text(`${event.venue?.name || "Unknown venue"} – ${event.venue?.town || ""} – ${event.date}`); /* Ensures venue, location and date are included in metadata */
 
-            $info.append($title, $meta); 
+            $info.append($title, $meta); /* Assembling the card container */
             $card.append($img, $info);
             $resultsDiv.append($card); /* This adds the card to the results section of index.html */
         });
