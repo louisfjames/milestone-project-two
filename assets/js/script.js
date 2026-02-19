@@ -16,4 +16,19 @@ $(document).ready(function () {
     const $resultsDiv = $("#results");
     const $statusDiv = $("#status");
 
+    // Search Bar Click Handler
+    $searchBtn.on("click", function () { 
+        const query = $searchBox.val().trim(); 
+        if (query === "") 
+            { $statusDiv.text("Please enter an artist name."); return; 
+
+        }
+        
+        $resultsDiv.empty();
+        $statusDiv.text(`Searching for "${query}"…`);
+
+    // API call to be added here
+
+    });
+
 });
