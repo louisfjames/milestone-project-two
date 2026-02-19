@@ -19,9 +19,15 @@ body {
     border-color: var(--secondary-highlight-color);
 }
 
-/* results-grid class */
+/* Results section of search page */
+.results-grid {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
 
-/* event-card class */
+/* Individal festival cards generated */
 .event-card {
   display: flex;
   gap: 15px;
