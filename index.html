@@ -49,30 +49,37 @@
                 </div>
             </div>
                          
-            <!-- Search bar -->
-            <div class="d-flex flex-column flex-md-row gap-2 mb-3 p-3">
-                <input type="text" id="search-box" class="form-control form-control-lg" placeholder="Enter artist, festival, or city…"/>
-                <button id="search-btn" class="btn btn-primary btn-lg">Search</button>
-            </div>
+            <!-- Search controls-->
+            <div class="row g-3 align-items-center mb-3 p-3">
 
-            <!-- Search mode toggle -->
-            <div class="row justify-content-center mb-2">
-                <div class="col-12 col-md-auto p-1">
-                    <select id="mode-toggle" class="form-select form-select-lg w-auto mx-auto">
-                    <option value="artist">Search by Artist</option>
-                    <option value="festival">Search by Festival Name</option>
-                    <option value="city">Search by City</option>
+                <!-- Search bar -->
+                <div class="col-12 col-md-6 d-flex">
+                    <input type="text" id="search-box" class="form-control form-control-lg" placeholder="Enter artist, festival, or city…"/>
+                </div>
+
+                <!-- Search mode toggle -->
+                <div class="col-12 col-md-3 d-flex justify-content-center">
+                    <select id="mode-toggle" class="form-select form-select-lg w-auto">
+                        <option value="artist">Search by Artist</option>
+                        <option value="festival">Search by Festival Name</option>
+                        <option value="city">Search by City</option>
                     </select>
                 </div>
+
                 <!-- UK-only checkbox -->
-                <div class="col-12 col-md-auto d-flex justify-content-center align-items-center p-4"> 
+                <div class="col-12 col-md-auto d-flex justify-content-center"> 
                     <label class="d-flex align-items-center gap-2 mb-0">
                         <input type="checkbox" id="uk-only-toggle">
                         <span>UK‑only Festivals</span>
                     </label>
                 </div>
             </div>
-            
+
+            <!-- Search button -->
+            <div class="text-center">
+                <button id="search-btn" class="btn btn-primary btn-lg px-5 py-3">Search</button>
+            </div>
+
         </section>
 
         <!-- Seach results -->
@@ -80,7 +87,11 @@
     </main>
 
     <!-- Footer -->
-    
+    <footer class="mt-auto footer-section py-4">
+        <div class="align-items-center">
+            <p>Powered by Skiddle©</p>
+        </div>
+    </footer>
 
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
