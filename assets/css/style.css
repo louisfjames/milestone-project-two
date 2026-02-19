@@ -3,7 +3,7 @@
     --primary-color: #000000; /* black */
     --secondary-color: #ffffff; /* white */
     --highlight-color: orange; /* red */
-    --secondary-highlight-color: yellow
+    --secondary-highlight-color: rgba(255, 106, 0, 0.054)
     ; /* orange */
 }
 
@@ -34,7 +34,7 @@ body {
   padding: 50px;
   border-radius: 20px;
   border: 2px solid var(--secondary-color);
-  background: transparent;
+  background: var(--secondary-highlight-color);
   align-items: center;
 }
 
