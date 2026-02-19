@@ -19,6 +19,7 @@ $(document).ready(function () {
     // Search Bar Click Handler
     $searchBtn.on("click", function () { 
         const query = $searchBox.val().trim(); 
+
         if (query === "") {
             $statusDiv.text("Please enter an artist name."); 
             return; 
@@ -27,8 +28,23 @@ $(document).ready(function () {
         $resultsDiv.empty();
         $statusDiv.text(`Searching for "${query}"…`);
 
-    // API call to be added here
+    // API Parameters Request
 
+    const today = new Date().toISOString().split("T")[0]; /* This was the best way to identify today's date for the minDate API parameter */
+
+    const params = {
+    api_key: SKIDDLE_API_KEY,
+    keyword: query,
+    eventcode: "FEST",
+    minDate: today,
+    description: "1",
+    limit: "100",
+    order: "date"
+    };
+
+
+    // API call to be added here
+ 
     });
 
 });
