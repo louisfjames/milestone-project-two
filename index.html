@@ -16,37 +16,53 @@
 </head>
 
 <body>
-    
+
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">Festival Tracker</a>
-
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                <li class="nav-item"><a class="nav-link active" href="index.html">Search</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Discover</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">FAQ</a></li>
-                </ul>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">Festival Tracker</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link active" href="index.html">Search</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Discover</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">FAQ</a></li>
+                    </ul>
+                </div>
             </div>
-        </div>
-    </nav>
+        </nav>
+    </header>
 
     <!-- Main Content -->
+    <main>
+        <section>
+            <!-- Search bar -->
+            <div class="d-flex flex-column flex-md-row gap-2 mb-3 p-3">
+                <input type="text" id="search-box" class="form-control form-control-lg" placeholder="Enter artist, festival, or city…"/>
+                <button id="search-btn" class="btn btn-primary btn-lg">Search</button>
+            </div>
 
+        <!-- Search mode toggle -->
+            <div class="row justify-content-center mb-2">
+                <div class="col-12 col-md-auto">
+                    <select id="mode-toggle" class="form-select form-select-lg w-auto mx-auto">
+                    <option value="artist">Search by Artist</option>
+                    <option value="festival">Search by Festival Name</option>
+                    <option value="city">Search by City</option>
+                    </select>
+                </div>
+            </div>
 
-        <!-- Search Row -->
+        <!-- UK-only checkbox -->
 
+        </section>
 
-        <!-- Mode Toggle -->
+        <!-- Seach results -->
 
-
-        <!-- UK-only toggle -->
-
+    </main>
 
     <!-- Footer -->
     
