@@ -18,6 +18,7 @@ $(document).ready(function () {
     const $searchBox = $("#search-box");
     const $resultsDiv = $("#results");
     const $statusDiv = $("#status");
+    const $modeToggle = $("#mode-toggle"); 
 
     // 'Read More' Click Handler (after loading search results) - Needs to go before search bar otherwise ther 'read more' toggle will cancel itself out on a second search
     $resultsDiv.on("click", ".read-more-btn", function () {
@@ -36,9 +37,14 @@ $(document).ready(function () {
     // Search Bar Click Handler
     $searchBtn.on("click", function () { 
         const query = $searchBox.val().trim(); 
+        const mode = $modeToggle.val();
 
         if (query === "") {
-            $statusDiv.text("Please enter an artist name."); 
+            const label = mode === "artist" ? "an artist name"
+                    : mode === "festival" ? "a festival name"
+                    :  "a city";
+
+            $statusDiv.text(`Please enter ${label}.`); 
             return; 
         }
         
