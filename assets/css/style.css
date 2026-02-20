@@ -45,4 +45,10 @@ body {
 
 /* event-lineup class */
 
+/* Highlighting searched artist on lineup */
+.highlight-artist {
+    color: var(--highlight-color);
+    font-weight: bold;
+}
+
 /* event-card image class - to fix on smaller screens */

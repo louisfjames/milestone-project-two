@@ -68,11 +68,9 @@ $(document).ready(function () {
 
         filtered.forEach(event => {
             const $card = $("<div>").addClass("event-card"); // Creating an card container for each festival 
-
             const $img = $("<img>") // Adding the festival image to card container 
                 .attr("src", event.largeimageurl || event.imageurl || "https://via.placeholder.com/140?text=No+Image") // Good practice to include placeholder link in case API doesn't return an image
                 .attr("alt", event.eventname);
-
             const $info = $("<div>").addClass("event-info"); // Creating a container for the text 
             const $title = $("<h3>").text(event.eventname); // Adding festival name to card container 
             const $meta = $("<div>") // Adding metadata to card container 
@@ -81,14 +79,18 @@ $(document).ready(function () {
             const $desc = $("<p>") // Adding festival description to card container
                 .addClass("event-description")
                 .text(event.description || "No description available.");
-            const lineup = event.artists
-                ? event.artists.map(a => a.name).join(", ") // Extracting artist names
+            const lower = query.toLowerCase(); // To make the artist name comparison below case-insenstive
+            const lineup = event.artists // Adding festival lineup to card container and highlighting searched artist in the lineup
+                ? event.artists.map(a => {
+                    if (a.name.toLowerCase() === lower) {
+                        return `<span class="highlight-artist">${a.name}</span>`; // Highlight the searched artist using --highlight-color css variable + bold stylinh
+                    }
+                    return a.name;
+                }).join(", ")
                 : "Lineup not available";
-            const $lineup = $("<p>")
+            const $lineup = $("<p>") // Adding lineup to card container
                 .addClass("event-lineup")
-                .text(`Lineup: ${lineup}`);
-
-
+                .html(`Lineup: ${lineup}`); // The only way to allow css to work is to make the output html rather than text
 
             $info.append($title, $meta, $desc, $lineup); // Assembling the card container
             $card.append($img, $info);
