@@ -24,6 +24,14 @@ body {
     color: var(--secondary-color);
 }
 
+/* Search bar*/
+#search-box {
+    max-width: 500px; /* adjust to taste */
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 /* Results section of search page */
 .results-grid {
     padding: 20px;
