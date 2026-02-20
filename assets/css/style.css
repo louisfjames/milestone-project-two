@@ -3,8 +3,7 @@
     --primary-color: #000000; /* black */
     --secondary-color: #ffffff; /* white */
     --highlight-color: orange; /* red */
-    --secondary-highlight-color: rgba(255, 106, 0, 0.054)
-    ; /* orange */
+    --secondary-highlight-color: rgba(255, 106, 0, 0.054) ; /* transparent dark orange */
 }
 
 /* Global styles */
@@ -41,5 +40,7 @@ body {
 /* event-info class */
 
 /* event-meta class */
+
+/* event-description class */
 
 /* event-card image class - to fix on smaller screens */
