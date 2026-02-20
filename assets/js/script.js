@@ -97,9 +97,13 @@ $(document).ready(function () {
             const $title = $("<h3>").text(event.eventname); 
 
             // Adding metadata to card container 
+
+            const dateObj = new Date(event.date);
+            const formattedDate = dateObj.toLocaleDateString("en-GB");  // Ensures the date is in the UK standard format
+
             const $meta = $("<div>") 
                 .addClass("event-meta")
-                .html(`<i class="fa-solid fa-location-dot"></i> ${event.venue?.name || "Unknown venue"} – ${event.venue?.town || ""} &nbsp;&nbsp; <i class="fa-solid fa-calendar-day"></i> ${event.date}`);                
+                .html(`<i class="fa-solid fa-location-dot"></i> ${event.venue?.name || "Unknown venue"} – ${event.venue?.town || ""} &nbsp;&nbsp; <i class="fa-solid fa-calendar-day"></i> ${formattedDate}`);                
                 // Ensures venue, location and date are included in metadata
             
             // Adding festival description to card container
