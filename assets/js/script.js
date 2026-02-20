@@ -104,7 +104,6 @@ $(document).ready(function () {
             default:
                 filtered = data.results;
         }
-    
 
         if (filtered.length === 0) { 
             $resultsDiv.text("No matches found."); // Showing a message if there are no matches found 
@@ -140,8 +139,6 @@ $(document).ready(function () {
                 .html(`<strong>Info:</strong> ${event.description || "No description available."}`);
             
             // Adding festival lineup to card container, highlighting searched artist in the lineup,  calling artist cap and 'read more' button
-            const lower = query.toLowerCase(); // To make the artist name comparison below case-insenstive
-
             const artists = event.artists || [];
             const processedArtists = artists.map(a => {
                 return a.name.toLowerCase() === lower 
