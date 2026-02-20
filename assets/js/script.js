@@ -99,12 +99,13 @@ $(document).ready(function () {
             // Adding metadata to card container 
             const $meta = $("<div>") 
                 .addClass("event-meta")
-                .text(`${event.venue?.name || "Unknown venue"} – ${event.venue?.town || ""} – ${event.date}`); // Ensures venue, location and date are included in metadata
+                .html(`<i class="fa-solid fa-location-dot"></i> ${event.venue?.name || "Unknown venue"} – ${event.venue?.town || ""} &nbsp;&nbsp; <i class="fa-solid fa-calendar-day"></i> ${event.date}`);                
+                // Ensures venue, location and date are included in metadata
             
             // Adding festival description to card container
             const $desc = $("<p>") 
                 .addClass("event-description")
-                .text(event.description || "No description available.");
+                .text(`Info: ${event.description || "No description available."}`);
             
             // Adding festival lineup to card container, highlighting searched artist in the lineup,  calling artist cap and 'read more' button
             const lower = query.toLowerCase(); // To make the artist name comparison below case-insenstive
