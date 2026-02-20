@@ -70,21 +70,27 @@ $(document).ready(function () {
             const $card = $("<div>").addClass("event-card"); // Creating an card container for each festival 
 
             const $img = $("<img>") // Adding the festival image to card container 
-            .attr("src", event.largeimageurl || event.imageurl || "https://via.placeholder.com/140?text=No+Image") // Good practice to include placeholder link in case API doesn't return an image
-            .attr("alt", event.eventname);
+                .attr("src", event.largeimageurl || event.imageurl || "https://via.placeholder.com/140?text=No+Image") // Good practice to include placeholder link in case API doesn't return an image
+                .attr("alt", event.eventname);
 
             const $info = $("<div>").addClass("event-info"); // Creating a container for the text 
             const $title = $("<h3>").text(event.eventname); // Adding festival name to card container 
             const $meta = $("<div>") // Adding metadata to card container 
-            .addClass("event-meta")
-            .text(`${event.venue?.name || "Unknown venue"} – ${event.venue?.town || ""} – ${event.date}`); // Ensures venue, location and date are included in metadata
+                .addClass("event-meta")
+                .text(`${event.venue?.name || "Unknown venue"} – ${event.venue?.town || ""} – ${event.date}`); // Ensures venue, location and date are included in metadata
             const $desc = $("<p>") // Adding festival description to card container
-            .addClass("event-description")
-            .text(event.description || "No description available.");
+                .addClass("event-description")
+                .text(event.description || "No description available.");
+            const lineup = event.artists
+                ? event.artists.map(a => a.name).join(", ") // Extracting artist names
+                : "Lineup not available";
+            const $lineup = $("<p>")
+                .addClass("event-lineup")
+                .text(`Lineup: ${lineup}`);
 
 
 
-            $info.append($title, $meta, $desc); // Assembling the card container
+            $info.append($title, $meta, $desc, $lineup); // Assembling the card container
             $card.append($img, $info);
             $resultsDiv.append($card); // This adds the card to the results section of index.html 
         });
