@@ -78,11 +78,33 @@ $(document).ready(function () {
         }
 
         const lower = query.toLowerCase(); // Prepare the user’s search term for matching 
+        const mode = $modeToggle.val(); // Switches search mode (i.e. artist, festival or city) using the toggle
 
-        const filtered = data.results.filter(event => // Filtering the API results to find festivals featuring that artist 
-            event.artists &&
-            event.artists.some(a => a.name.toLowerCase() === lower)
-        );
+        
+        let filtered; // Filtering the API results to find festivals based on the search mode
+
+        switch (mode) {
+            case "artist": // Search mode by artist
+                filtered = data.results.filter(event =>
+                    event.artists &&
+                    event.artists.some(a => a.name.toLowerCase() === lower)
+                );
+                break;
+            case "festival": // Search mode by festival
+                filtered = data.results.filter(event =>
+                    event.eventname.toLowerCase().includes(lower)
+                );
+                break;
+
+            case "city": // Search mode by city
+                filtered = data.results.filter(event =>
+                    event.venue?.town?.toLowerCase().includes(lower)
+                );
+                break;
+            default:
+                filtered = data.results;
+        }
+    
 
         if (filtered.length === 0) { 
             $resultsDiv.text("No matches found."); // Showing a message if there are no matches found 
