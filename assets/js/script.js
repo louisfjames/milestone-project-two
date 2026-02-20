@@ -10,6 +10,9 @@ $(document).ready(function () {
     // API key stored as const as will need throughout code
     const SKIDDLE_API_KEY = "481b24e5efaa9cbb9433c9119edda0d9";
 
+    // Global constants
+    const ARTIST_CAP = 10; // To allow for cap on artists shown in lineup on searches
+
     // DOM Elements
     const $searchBtn = $("#search-btn");
     const $searchBox = $("#search-box");
@@ -68,31 +71,55 @@ $(document).ready(function () {
 
         filtered.forEach(event => {
             const $card = $("<div>").addClass("event-card"); // Creating an card container for each festival 
-            const $img = $("<img>") // Adding the festival image to card container 
+            // Adding the festival image to card container 
+            const $img = $("<img>") 
                 .attr("src", event.largeimageurl || event.imageurl || "https://via.placeholder.com/140?text=No+Image") // Good practice to include placeholder link in case API doesn't return an image
                 .attr("alt", event.eventname);
-            const $info = $("<div>").addClass("event-info"); // Creating a container for the text 
-            const $title = $("<h3>").text(event.eventname); // Adding festival name to card container 
-            const $meta = $("<div>") // Adding metadata to card container 
+
+            // Creating a container for the text 
+            const $info = $("<div>").addClass("event-info"); 
+
+            // Adding festival name to card container 
+            const $title = $("<h3>").text(event.eventname); 
+
+            // Adding metadata to card container 
+            const $meta = $("<div>") 
                 .addClass("event-meta")
                 .text(`${event.venue?.name || "Unknown venue"} – ${event.venue?.town || ""} – ${event.date}`); // Ensures venue, location and date are included in metadata
-            const $desc = $("<p>") // Adding festival description to card container
+            
+            // Adding festival description to card container
+            const $desc = $("<p>") 
                 .addClass("event-description")
                 .text(event.description || "No description available.");
+            
+            // Adding festival lineup to card container, highlighting searched artist in the lineup,  calling artist cap and 'read more' button
             const lower = query.toLowerCase(); // To make the artist name comparison below case-insenstive
-            const lineup = event.artists // Adding festival lineup to card container and highlighting searched artist in the lineup
-                ? event.artists.map(a => {
-                    if (a.name.toLowerCase() === lower) {
-                        return `<span class="highlight-artist">${a.name}</span>`; // Highlight the searched artist using --highlight-color css variable + bold stylinh
-                    }
-                    return a.name;
-                }).join(", ")
-                : "Lineup not available";
+
+            const artists = event.artists || [];
+            const processedArtists = artists.map(a => {
+                return a.name.toLowerCase() === lower 
+                    ? `<span class="highlight-artist">${a.name}</span>` // Highlighting the searched artist
+                    : a.name;
+            });
+
+            const visibleArtists = processedArtists.slice(0, ARTIST_CAP).join(", ");  // The purpose of this is to call artist cap to only show 10 artists on lineup
+            const hiddenArtists = processedArtists.slice(ARTIST_CAP).join(", ");  // Split into visible + hidden sections
+
+            let lineupHTML = `Lineup: ${visibleArtists}`;
+
+            if (hiddenArtists.length > 0) {
+                lineupHTML += `
+                    <span class="more-artists" style="display:none;">, ${hiddenArtists}</span>
+                    <button class="read-more-btn">Read more</button>
+                `; // Read more button links to read-more-btn class and runs toggle function included in first section of script.js 
+            }
+
             const $lineup = $("<p>") // Adding lineup to card container
                 .addClass("event-lineup")
-                .html(`Lineup: ${lineup}`); // The only way to allow css to work is to make the output html rather than text
-
-            $info.append($title, $meta, $desc, $lineup); // Assembling the card container
+                .html(lineupHTML); // The only way to allow css to work is to make the output html rather than text
+            
+            // Assembling the card container
+            $info.append($title, $meta, $desc, $lineup); 
             $card.append($img, $info);
             $resultsDiv.append($card); // This adds the card to the results section of index.html 
         });
