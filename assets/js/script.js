@@ -94,7 +94,7 @@ $(document).ready(function () {
             const $info = $("<div>").addClass("event-info"); 
 
             // Adding festival name to card container 
-            const $title = $("<h3>").text(event.eventname); 
+            const $title = $("<h2>").text(event.eventname); 
 
             // Adding metadata to card container 
 

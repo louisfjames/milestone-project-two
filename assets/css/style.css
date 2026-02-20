@@ -52,6 +52,10 @@ body {
 }
 
 /* event-info class */
+.event-info h2 {
+    margin-bottom: 0.5rem;   /* space under the title */
+    font-size: 1.75rem;
+}
 
 /* event-meta class */
 
