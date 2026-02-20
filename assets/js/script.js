@@ -109,7 +109,7 @@ $(document).ready(function () {
             // Adding festival description to card container
             const $desc = $("<p>") 
                 .addClass("event-description")
-                .text(`Info: ${event.description || "No description available."}`);
+                .html(`<strong>Info:</strong> ${event.description || "No description available."}`);
             
             // Adding festival lineup to card container, highlighting searched artist in the lineup,  calling artist cap and 'read more' button
             const lower = query.toLowerCase(); // To make the artist name comparison below case-insenstive
@@ -124,7 +124,7 @@ $(document).ready(function () {
             const visibleArtists = processedArtists.slice(0, ARTIST_CAP).join(", ");  // The purpose of this is to call artist cap to only show 10 artists on lineup
             const hiddenArtists = processedArtists.slice(ARTIST_CAP).join(", ");  // Split into visible + hidden sections
 
-            let lineupHTML = `Lineup: ${visibleArtists}`;
+            let lineupHTML = `<strong>Lineup:</strong> ${visibleArtists}`;
 
             if (hiddenArtists.length > 0) {
                 lineupHTML += `
