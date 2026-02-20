@@ -2,7 +2,7 @@
 :root {
     --primary-color: #000000; /* black */
     --secondary-color: #ffffff; /* white */
-    --highlight-color: orange; /* red */
+    --highlight-color: rgb(255, 94, 0); /* orange */
     --secondary-highlight-color: rgba(255, 106, 0, 0.054) ; /* transparent dark orange */
 }
 
@@ -16,6 +16,12 @@ body {
 .btn {
     background-color: var(--highlight-color);
     border-color: var(--secondary-highlight-color);
+}
+
+.read-more-btn {
+    background-color: var(--highlight-color);
+    border-color: var(--secondary-highlight-color);
+    color: var(--secondary-color);
 }
 
 /* Results section of search page */

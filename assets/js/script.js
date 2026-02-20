@@ -19,6 +19,20 @@ $(document).ready(function () {
     const $resultsDiv = $("#results");
     const $statusDiv = $("#status");
 
+    // 'Read More' Click Handler (after loading search results) - Needs to go before search bar otherwise ther 'read more' toggle will cancel itself out on a second search
+    $resultsDiv.on("click", ".read-more-btn", function () {
+        const $btn = $(this);
+        const $hidden = $btn.siblings(".more-artists");
+
+        if ($hidden.is(":visible")) {
+            $hidden.slideUp(500);
+            $btn.text("Read more");
+        } else {
+            $hidden.slideDown(500);
+            $btn.text("Show less");
+        }
+    });
+
     // Search Bar Click Handler
     $searchBtn.on("click", function () { 
         const query = $searchBox.val().trim(); 
@@ -38,7 +52,7 @@ $(document).ready(function () {
     const params = {
     api_key: SKIDDLE_API_KEY,
     keyword: query,
-    eventcode: "FEST",
+    eventcode: "FEST", // This ensures that only festivals are called to the website
     minDate: today,
     description: "1",
     limit: "100", //the limit is stated on the Skiddle API GitHub documentation 
