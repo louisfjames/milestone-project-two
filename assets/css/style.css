@@ -53,21 +53,28 @@ body {
 
 /* event-info class */
 .event-info h2 {
-    margin-bottom: 0.5rem;   /* space under the title */
-    font-size: 1.75rem;
+    margin-bottom: 0.75rem;   /* space under the title */
+    font-size: 1.5rem;
 }
 
 /* event-meta class */
+.event-meta {
+    margin-bottom: 0.75rem;   /* space under location/date */
+}
 
 /* event-description class */
+.event-description {
+    margin-bottom: 0.75rem;   /* space under the info section */
+}
 
-/* event-lineup class */
+/* event-lineup class - NOT YET USED */
 
 /* Highlighting searched artist on lineup */
 .highlight-artist {
     color: var(--highlight-color);
     font-weight: bold;
 }
+
 
 /* Media queries */
 
