@@ -3,7 +3,7 @@
     --primary-color: #000000; /* black */
     --secondary-color: #ffffff; /* white */
     --highlight-color: rgb(255, 94, 0); /* orange */
-    --secondary-highlight-color: rgba(255, 106, 0, 0.054) ; /* transparent dark orange */
+    --secondary-highlight-color: rgb(255, 247, 0) ; /* transparent dark orange */
 }
 
 /* Global styles */
@@ -17,6 +17,17 @@ body {
     background-color: var(--highlight-color);
     border-color: var(--secondary-highlight-color);
 }
+
+.read-more-link {
+    color: var(--highlight-color); 
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.read-more-link:hover {
+    text-decoration: underline;
+}
+
 
 /* Search bar*/
 #search-box {
@@ -46,7 +57,7 @@ body {
   padding: 50px;
   border-radius: 20px;
   border: 2px solid var(--secondary-color);
-  background: var(--secondary-highlight-color);
+  background: var(--primary-color);
   align-items: center;
 }
 
@@ -70,7 +81,7 @@ body {
 
 /* Highlighting searched artist on lineup */
 .highlight-artist {
-    color: var(--highlight-color);
+    color: var(--secondary-highlight-color);
     font-weight: bold;
 }
 
