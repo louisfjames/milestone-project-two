@@ -18,12 +18,6 @@ body {
     border-color: var(--secondary-highlight-color);
 }
 
-.read-more-btn {
-    background-color: var(--highlight-color);
-    border-color: var(--secondary-highlight-color);
-    color: var(--secondary-color);
-}
-
 /* Search bar*/
 #search-box {
     max-width: 500px;
@@ -82,17 +76,17 @@ body {
 
 /* Footer section */
 .footer-header {
-    font-size: 1.6rem;
+    font-size: 1.7rem;
 }
 
 .footer-text {
-    font-size: 0.7rem;
+    font-size: 0.8rem;
 }
 
 /* Footer section social media links*/
 .social-media-links a {
     color: var(--secondary-color);
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     padding: 10px;
     transition: 0.3s ease; /* smooth animation for hover */
 }

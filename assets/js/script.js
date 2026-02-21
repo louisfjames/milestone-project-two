@@ -21,7 +21,7 @@ $(document).ready(function () {
     const $modeToggle = $("#mode-toggle"); 
 
     // 'Read More' Click Handler (after loading search results) - Needs to go before search bar otherwise ther 'read more' toggle will cancel itself out on a second search
-    $resultsDiv.on("click", ".read-more-btn", function () {
+    $resultsDiv.on("click", ".read-more-link", function () {
         const $btn = $(this);
         const $hidden = $btn.siblings(".more-artists");
 
@@ -155,7 +155,7 @@ $(document).ready(function () {
             if (hiddenArtists.length > 0) {
                 lineupHTML += `
                     <span class="more-artists" style="display:none;">, ${hiddenArtists}</span>
-                    <button class="read-more-btn">Read more</button>
+                    <a class="read-more-link">Read more</a>
                 `; // Read more button links to read-more-btn class and runs toggle function included in first section of script.js 
             }
 
