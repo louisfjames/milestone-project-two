@@ -42,7 +42,7 @@ $(document).ready(function () {
         if (query === "") {
             const label = mode === "artist" ? "an artist name"
                     : mode === "festival" ? "a festival name"
-                    :  "a city";
+                    :  "a city"; // default set to "city" as "artist" and "festival" are listed above so no need to list "city" in code
 
             $statusDiv.text(`Please enter ${label}.`); 
             return; 
@@ -140,7 +140,8 @@ $(document).ready(function () {
             
             // Adding festival lineup to card container, highlighting searched artist in the lineup,  calling artist cap and 'read more' button
             const artists = event.artists || [];
-            const processedArtists = artists.map(a => {
+
+                        const processedArtists = artists.map(a => {
                 return a.name.toLowerCase() === lower 
                     ? `<span class="highlight-artist">${a.name}</span>` // Highlighting the searched artist
                     : a.name;
