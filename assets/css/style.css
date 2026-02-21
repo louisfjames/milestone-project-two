@@ -26,10 +26,15 @@ body {
 
 /* Search bar*/
 #search-box {
-    max-width: 500px; /* adjust to taste */
+    max-width: 500px;
     width: 100%;
     margin-left: auto;
     margin-right: auto;
+}
+
+/* Search mode toggle */
+#mode-toggle {
+    max-width: 300px;
 }
 
 /* Results section of search page */
