@@ -1,9 +1,9 @@
 /* CSS variables */
 :root {
-    --primary-color: #000000; /* black */
-    --secondary-color: #ffffff; /* white */
-    --highlight-color: rgb(255, 94, 0); /* orange */
-    --secondary-highlight-color: rgb(255, 247, 0) ; /* transparent dark orange */
+    --primary-color: #251F1E; /* brown‑black */
+    --secondary-color: #e9ebd5; /* pale yellow */
+    --highlight-color: #C65A5A; /* warm red */
+    --secondary-highlight-color: #F2C94C; /* golden yellow*/
 }
 
 /* Global styles */
@@ -30,7 +30,7 @@ body {
 }
 
 
-/* Search bar*/
+/* Search bar */
 #search-box {
     max-width: 500px;
     width: 100%;
@@ -45,6 +45,14 @@ body {
 #search-box::placeholder {
     color: var(--secondary-color);
     opacity: 0.5;
+}
+
+#search-box:focus { /* keeps the same styling even when using the search bar */
+    background-color: transparent;
+    border: 3px solid var(--secondary-color);   
+    color: var(--secondary-color)!important;
+    box-shadow: none;
+    outline: none;
 }
 
 /* Search mode toggle */
