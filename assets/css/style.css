@@ -12,6 +12,39 @@ body {
     background-color: var(--primary-color);
 }
 
+/* Nav bar */
+#navbar {
+    background-color: var(--primary-color) !important;
+    text-transform: uppercase;
+}
+
+#navbar .navbar-brand {
+    color: var(--secondary-color);
+}
+
+#navbar .nav-link {
+    color: var(--secondary-color);
+    margin: 0 1rem; /* adjusting spacing */
+    border-bottom: 2px solid transparent;
+    transition: all 200ms ease;
+}
+
+#navbar .nav-link:hover {
+    background-image:
+        linear-gradient(to right, var(--highlight-color), var(--secondary-highlight-color)), /* Created two gradients (one for the text, one for the underline) */
+        linear-gradient(to right, var(--highlight-color), var(--secondary-highlight-color));
+    background-size: 100% 100%, 100% 2px; /* Stack gradients as background layers (full-size layer for the text and thin layer for the underline) */
+    background-position: 0 0, 0 100%;     /* Position the second gradient at the bottom so it becomes a gradient underline */
+    background-repeat: no-repeat;
+    -webkit-background-clip: text, border-box; /* Text layer clipped to text and underline layer clipped to border area */
+    background-clip: text, border-box;
+    -webkit-text-fill-color: transparent; /* Made the text transparent so the gradient becomes the visible*/
+}
+
+#navbar .navbar-toggler-icon {
+    color: red;
+}
+
 /* Search bar */
 #search-box {
     max-width: 500px;
@@ -67,7 +100,7 @@ body {
 }
 
 #search-btn:hover {
-    background-image: linear-gradient(to right, var(--highlight-color), var(--secondary-highlight-color))!important;
+    background: linear-gradient(to right, var(--highlight-color), var(--secondary-highlight-color))!important;
     border-color: var(--secondary-highlight-color);
     color: var(--primary-color)!important;
 }
@@ -75,7 +108,7 @@ body {
 #search-btn:focus,
 #search-btn:active,
 #search-btn:focus-visible {
-    background-image: linear-gradient(to right, var(--highlight-color), var(--secondary-highlight-color))!important;
+    background: linear-gradient(to right, var(--highlight-color), var(--secondary-highlight-color))!important;
     border-color: var(--secondary-highlight-color)!important;
     box-shadow: none !important; /* removes Bootstrap blue glow */
     outline: none !important; /* removes browser outline */
