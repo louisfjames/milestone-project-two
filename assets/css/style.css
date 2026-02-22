@@ -3,7 +3,7 @@
     --primary-color: #251F1E; /* brown‑black */
     --secondary-color: #eff0e2; /* pale yellow / cream */
     --highlight-color: #C65A5A; /* warm red */
-    --secondary-highlight-color: #F2C94C; /* golden yellow*/
+    --secondary-highlight-color: #F2C94C; /* golden yellow */
 }
 
 /* Global styles */
@@ -11,24 +11,6 @@ body {
     color: var(--secondary-color);
     background-color: var(--primary-color);
 }
-
-/* Buttons */
-.btn {
-    background-color: var(--highlight-color);
-    border-color: var(--secondary-highlight-color);
-}
-
-.read-more-link {
-    color: var(--highlight-color); 
-    font-weight: 600;
-    text-decoration: none;
-    text-decoration: underline;
-}
-
-.read-more-link:hover {
-    font-weight: bold;
-}
-
 
 /* Search bar */
 #search-box {
@@ -49,10 +31,10 @@ body {
 
 #search-box:focus { 
     background-color: transparent;
-    border: 3px solid var(--secondary-color); /* Overrides the blue outline from Bootstrap class when using the search bar */
+    border: 3px solid var(--secondary-color);
     color: var(--secondary-color)!important;
-    box-shadow: none;
-    outline: none; 
+    box-shadow: none; /* removes Bootstrap blue glow */
+    outline: none; /* removes browser outline */
 }
 
 /* Search mode toggle */
@@ -70,9 +52,33 @@ body {
 }
 
 #mode-toggle:focus { 
-    border-color: var(--secondary-color); /* Overrides the blue outline from Bootstrap class when using the search bar */
-    box-shadow: none;
-    outline: none; 
+    border-color: var(--secondary-color);
+    box-shadow: none; /* removes Bootstrap blue glow */
+    outline: none; /* removes browser outline */
+}
+
+/* Search button */
+#search-btn {
+    background-color: transparent;
+    border-color: var(--secondary-color);
+    border: 2.5px solid var(--secondary-color);
+    border-radius: 40px;
+    color: var(--secondary-color)!important;
+}
+
+#search-btn:hover {
+    background-image: linear-gradient(to right, var(--highlight-color), var(--secondary-highlight-color))!important;
+    border-color: var(--secondary-highlight-color);
+    color: var(--primary-color)!important;
+}
+
+#search-btn:focus,
+#search-btn:active,
+#search-btn:focus-visible {
+    background-image: linear-gradient(to right, var(--highlight-color), var(--secondary-highlight-color))!important;
+    border-color: var(--secondary-highlight-color)!important;
+    box-shadow: none !important; /* removes Bootstrap blue glow */
+    outline: none !important; /* removes browser outline */
 }
 
 /* Results section of search page */
@@ -112,9 +118,22 @@ body {
 
 /* event-lineup class - NOT YET USED */
 
+
 /* Highlighting searched artist on lineup */
 .highlight-artist {
     color: var(--secondary-highlight-color);
+    font-weight: bold;
+}
+
+/* Read more link included within festival card */
+.read-more-link {
+    color: var(--highlight-color); 
+    font-weight: 600;
+    text-decoration: none;
+    text-decoration: underline;
+}
+
+.read-more-link:hover {
     font-weight: bold;
 }
 
