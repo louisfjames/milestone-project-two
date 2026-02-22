@@ -86,8 +86,8 @@ body {
     outline: none; /* removes browser outline */
 }
 
-/* Search button on index.html and home button on 404.html */
-.main-btn {
+/* Search button on index.html */
+#search-btn {
     background-color: transparent;
     border-color: var(--secondary-color);
     border: 2.5px solid var(--secondary-color);
@@ -95,15 +95,39 @@ body {
     color: var(--secondary-color)!important;
 }
 
-.main-btn:hover {
+#search-btn:hover {
     background: linear-gradient(to right, var(--highlight-color), var(--secondary-highlight-color))!important;
     border-color: var(--secondary-highlight-color);
     color: var(--primary-color)!important;
 }
 
-.main-btn:focus,
-.main-btn:active,
-.main-btn:focus-visible {
+#search-btn:focus,
+#search-btn:active,
+#search-btn:focus-visible {
+    background: linear-gradient(to right, var(--highlight-color), var(--secondary-highlight-color))!important;
+    border-color: var(--secondary-highlight-color)!important;
+    box-shadow: none !important; /* removes Bootstrap blue glow */
+    outline: none !important; /* removes browser outline */
+}
+
+/* Home button on 404.html - had to replicate id to allow bootstrap css to still work */ 
+#home-btn {
+    background-color: transparent;
+    border-color: var(--secondary-color);
+    border: 2.5px solid var(--secondary-color);
+    border-radius: 40px;
+    color: var(--secondary-color)!important;
+}
+
+#home-btn:hover {
+    background: linear-gradient(to right, var(--highlight-color), var(--secondary-highlight-color))!important;
+    border-color: var(--secondary-highlight-color);
+    color: var(--primary-color)!important;
+}
+
+#home-btn:focus,
+#home-btn:active,
+#home-btn:focus-visible {
     background: linear-gradient(to right, var(--highlight-color), var(--secondary-highlight-color))!important;
     border-color: var(--secondary-highlight-color)!important;
     box-shadow: none !important; /* removes Bootstrap blue glow */
