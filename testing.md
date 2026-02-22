@@ -1,25 +1,18 @@
 # Milestone Project Two - Testing Documentation
 
-This document outlines the project’s testing strategy and summarises all testing completed throughout development.
+This document summarises all testing completed throughout development.
 
 ## CONTENTS
 
-1. [DEFENSIVE DESIGN](#defensive-design)
-2. [TESTING DRIVEN DEVELOPMENT](#testing-driven-development)
-3. [ACCEPTANCE CRITERIA TESTING](#acceptance-criteria-testing)
-4. [BEHAVIOUR DRIVEN DEVELOPMENT / MANUAL TESTING](#behaviour-driven-development--manual-testing)
-5. [SOFTWARE TESTING / AUTOMATED TESTING](#software-testing--automated-testing)
-6. [HTML VALIDATOR](#html-validator)
-7. [CSS VALIDATOR](#css-validator)
-8. [JEST / JAVASCRIPT VALIDATOR](#jest--javascript-validator)
-9. [GOOGLE CHROME LIGHTHOUSE](#google-chrome-lighthouse)
-10. [BUG FIXES](#bug-fixes)
+1. [ACCEPTANCE CRITERIA TESTING](#acceptance-criteria-testing)
+2. [BEHAVIOUR DRIVEN DEVELOPMENT / MANUAL TESTING](#behaviour-driven-development--manual-testing)
+3. [SOFTWARE TESTING / AUTOMATED TESTING](#software-testing--automated-testing)
+4. [HTML VALIDATOR](#html-validator)
+5. [CSS VALIDATOR](#css-validator)
+6. [JEST / JAVASCRIPT VALIDATOR](#jest--javascript-validator)
+7. [GOOGLE CHROME LIGHTHOUSE](#google-chrome-lighthouse)
+8. [BUG FIXES](#bug-fixes)
 
-### Defensive Design
-Explaining how I used defensive design in my project.
-
-### Testing Driven Development
-Explaining testing driven development (including RED-GREEN-REFACTOR) and how it was used in my project.
 
 ### Acceptance Criteria Testing
 A table of pass/fail against the user story acceptance criteria.
