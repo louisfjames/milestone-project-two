@@ -22,10 +22,11 @@ body {
     color: var(--highlight-color); 
     font-weight: 600;
     text-decoration: none;
+    text-decoration: underline;
 }
 
 .read-more-link:hover {
-    text-decoration: underline;
+    font-weight: bold;
 }
 
 
@@ -35,6 +36,15 @@ body {
     width: 100%;
     margin-left: auto;
     margin-right: auto;
+    background-color: transparent;
+    border: 3px solid var(--secondary-color);
+    color: var(--secondary-color)!important;
+    border-radius: 23px;
+}
+
+#search-box::placeholder {
+    color: var(--secondary-color);
+    opacity: 0.5;
 }
 
 /* Search mode toggle */
