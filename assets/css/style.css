@@ -41,10 +41,6 @@ body {
     -webkit-text-fill-color: transparent; /* Made the text transparent so the gradient becomes the visible*/
 }
 
-#navbar .navbar-toggler-icon {
-    color: red;
-}
-
 /* Search bar */
 #search-box {
     max-width: 500px;
