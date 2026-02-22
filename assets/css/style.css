@@ -1,7 +1,7 @@
 /* CSS variables */
 :root {
     --primary-color: #251F1E; /* brown‑black */
-    --secondary-color: #e9ebd5; /* pale yellow */
+    --secondary-color: #eff0e2; /* pale yellow / cream */
     --highlight-color: #C65A5A; /* warm red */
     --secondary-highlight-color: #F2C94C; /* golden yellow*/
 }
@@ -47,17 +47,32 @@ body {
     opacity: 0.5;
 }
 
-#search-box:focus { /* keeps the same styling even when using the search bar */
+#search-box:focus { 
     background-color: transparent;
-    border: 3px solid var(--secondary-color);   
+    border: 3px solid var(--secondary-color); /* Overrides the blue outline from Bootstrap class when using the search bar */
     color: var(--secondary-color)!important;
     box-shadow: none;
-    outline: none;
+    outline: none; 
 }
 
 /* Search mode toggle */
 #mode-toggle {
     max-width: 300px;
+    background-color: transparent;
+    border: 3px solid var(--secondary-color);
+    color: var(--secondary-color)!important;
+    border-radius: 23px;
+}
+
+#mode-toggle option { 
+    background-color: var(--primary-color); /* This removes the white background on the options when using mode toggle*/
+    color: var(--secondary-color);
+}
+
+#mode-toggle:focus { 
+    border-color: var(--secondary-color); /* Overrides the blue outline from Bootstrap class when using the search bar */
+    box-shadow: none;
+    outline: none; 
 }
 
 /* Results section of search page */
@@ -101,6 +116,11 @@ body {
 .highlight-artist {
     color: var(--secondary-highlight-color);
     font-weight: bold;
+}
+
+/* Spacing between the results section and footer section*/
+.results-spacing {
+    margin-bottom: 6rem;
 }
 
 /* Footer section */
