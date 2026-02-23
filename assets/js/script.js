@@ -141,7 +141,7 @@ $(document).ready(function () {
             // Adding festival lineup to card container, highlighting searched artist in the lineup,  calling artist cap and 'read more' button
             const artists = event.artists || [];
 
-                        const processedArtists = artists.map(a => {
+            const processedArtists = artists.map(a => {
                 return a.name.toLowerCase() === lower 
                     ? `<span class="highlight-artist">${a.name}</span>` // Highlighting the searched artist
                     : a.name;
@@ -167,6 +167,12 @@ $(document).ready(function () {
             $info.append($title, $meta, $desc, $lineup); 
             $card.append($img, $info);
             $resultsDiv.append($card); // This adds the card to the results section of index.html 
+
+            // Adding fallback to festivals who have no lineup information on Skiddle API
+            if (artists.length === 0) {
+                $lineup.html("<strong>Lineup:</strong> <i>Lineup coming soon.</i>");
+            }
+
         });
 
         }).fail(function (error) { // Catching any errors from the API requst 
