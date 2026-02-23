@@ -153,24 +153,38 @@ body {
   align-items: center;
 }
 
-/* event-info class */
+/* Festival name on card container */
 .event-info h2 {
     margin-bottom: 0.75rem; /* space under the title */
     font-size: 1.5rem;
 }
 
-/* event-meta class */
+/* Festival location and date on card containers */
 .event-meta {
     margin-bottom: 0.75rem; /* space under location/date */
 }
 
-/* event-description class */
+/* Festival info on card container */
 .event-description {
     margin-bottom: 0.75rem; /* space under the info section */
 }
 
-/* event-lineup class - NOT YET USED */
+/* event-lineup class - NOT YET USED & SHOULD BE REMOVED FROM CSS AND JS IF NOT NEEDED */
 
+/* Tickets / Skiddle button on card container*/
+.event-button {
+    background-color: transparent;
+    border-color: var(--secondary-color);
+    border: 2.5px solid var(--secondary-color);
+    border-radius: 20px;
+    color: var(--secondary-color)!important;
+}
+
+.event-button:hover {
+    background: var(--secondary-color);
+    border-color: var(--secondary-color);
+    color: var(--primary-color)!important;
+}
 
 /* Highlighting searched artist on lineup */
 .highlight-artist {

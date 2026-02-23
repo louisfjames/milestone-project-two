@@ -162,10 +162,21 @@ $(document).ready(function () {
             const $lineup = $("<p>") // Adding lineup to card container
                 .addClass("event-lineup")
                 .html(lineupHTML); // The only way to allow css to work is to make the output html rather than text
-            
+
+            // Add tickets link to card containers (with fallback directing user to Skiddle)
+            const ticketURL = event.tickets || event.link;
+
+            const $ticketsLink = $("<button>")
+                .addClass("event-button")
+                .text(event.tickets ? "Buy Tickets" : "Check Tickets on Skiddle")
+                .on("click", () => {
+                    window.open(ticketURL, "_blank");
+                })
+
             // Assembling the card container
             $info.append($title, $meta, $desc, $lineup); 
             $card.append($img, $info);
+            $info.append($ticketsLink);
             $resultsDiv.append($card); // This adds the card to the results section of index.html 
 
             // Adding fallback to festivals who have no lineup information on Skiddle API
