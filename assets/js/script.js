@@ -222,7 +222,7 @@ $(document).ready(function () {
         return $.getJSON(`https://www.skiddle.com/api/v1/events/${id}/?api_key=${SKIDDLE_API_KEY}`);
     }
 
-    // Load featured festivals into carousel
+    // Load featured festivals into carousel using card containers
     function loadFeaturedFestivals() {
         const requests = FEATURED_FESTIVALS.map(id => fetchFestivalById(id)); // FEATURED_FESTIVALS listed at the top of JavaScript
 
@@ -241,11 +241,34 @@ $(document).ready(function () {
                     // Building the corousel items using HTML
                     const item = `
                         <div class="carousel-item ${index === 0 ? "active" : ""}">
-                            <img src="${event.largeimageurl || event.imageurl}" class="d-block w-100" alt="${event.eventname}">
-                            <div class="carousel-caption d-none d-md-block">
-                                <h5>${event.eventname}</h5>
-                                <p><strong>${event.venue?.name}</strong> – ${event.venue?.town} • ${formattedDate}</p>
-                                <p><strong>Lineup:</strong> ${artists}</p>
+                            <div class="container py-4">
+                                <div class="row align-items-center">
+                                    
+                                    <!-- Festival poster to the left of the card container -->
+                                    <div class="col-md-4 text-center">
+                                        <img src="${event.largeimageurl || event.imageurl}" 
+                                            class="img-fluid rounded event-poster" 
+                                            alt="${event.eventname}">
+                                    </div>
+
+                                    <!-- Festival details to the left of the card container -->
+                                    <div class="col-md-8 pt-3">
+                                        <h3 class="mb-2">${event.eventname}</h3>
+
+                                        <p class="event-meta mb-2">
+                                            <i class="fa-solid fa-location-dot"></i> 
+                                            ${event.venue?.name || "Unknown venue"} – ${event.venue?.town || ""}
+                                            &nbsp;&nbsp;
+                                            <i class="fa-solid fa-calendar-day"></i> 
+                                            ${formattedDate}
+                                        </p>
+
+                                        <p class="event-lineup mb-2">
+                                            <strong>Lineup:</strong> ${artists}
+                                        </p>
+
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     `;
