@@ -194,7 +194,7 @@ body {
 
 /* Read more link included within festival card */
 .read-more-link {
-    color: var(--highlight-color); 
+    color: var(--secondary-highlight-color); 
     font-weight: 600;
     text-decoration: none;
     text-decoration: underline;

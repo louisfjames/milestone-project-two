@@ -20,6 +20,14 @@ $(document).ready(function () {
     const $statusDiv = $("#status");
     const $modeToggle = $("#mode-toggle"); 
 
+    // Allows user to hit enter on search bar
+    $searchBox.on("keydown", function (enter) {
+        if (enter.key === "Enter") {
+            enter.preventDefault();
+            $searchBtn.click();
+        }
+    });
+    
     // 'Read More' Click Handler (after loading search results) - Needs to go before search bar otherwise ther 'read more' toggle will cancel itself out on a second search
     $resultsDiv.on("click", ".read-more-link", function () {
         const $btn = $(this);
@@ -50,6 +58,7 @@ $(document).ready(function () {
         
         $resultsDiv.empty();
         $statusDiv.text(`Searching for "${query}"…`);
+
 
     // API Parameters Request
 
@@ -163,7 +172,7 @@ $(document).ready(function () {
                 .addClass("event-lineup")
                 .html(lineupHTML); // The only way to allow css to work is to make the output html rather than text
 
-            // Add tickets link to card containers (with fallback directing user to Skiddle)
+            // Adding tickets button to card containers (with fallback directing user to Skiddle)
             const ticketURL = event.tickets || event.link;
 
             const $ticketsLink = $("<button>")
