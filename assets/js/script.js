@@ -1,5 +1,5 @@
 // -------------------------------------
-// Search bar code utilising Skiddle API 
+// Skiddle API Code
 // -------------------------------------
 
 // jQuery is the code language of choice for this project
@@ -12,6 +12,14 @@ $(document).ready(function () {
 
     // Global constants
     const ARTIST_CAP = 10; // To allow for cap on artists shown in lineup on searches
+
+    // Featured festivals for Discover page - this can be updated as required
+    const FEATURED_FESTIVALS = [
+    "41408774", // Boomtown
+    "41496625", // TRNSMT Festival
+    "41414028", // Reading Festival
+    "41490996"  // All Points East
+    ];
 
     // DOM Elements
     const $searchBtn = $("#search-btn");
@@ -76,8 +84,11 @@ $(document).ready(function () {
 
     const url = "https://www.skiddle.com/api/v1/events/search/?" + $.param(params); // turns the object into a query string 
 
-    // API call and filter by artist
+    // -------------------------------------
+    // Search bar code utilising Skiddle API 
+    // -------------------------------------
     
+    // API call and filter by artist
     $.getJSON(url, function (data) { // Request to the Skiddle API 
         $statusDiv.text("");
 
@@ -201,5 +212,53 @@ $(document).ready(function () {
         });
 
     });
+
+    // --------------------------------------------
+    // Discover page features utilising Skiddle API 
+    // --------------------------------------------
+    
+    // Fetch a single festival by ID (ID's are listed at the top of JavaScript)
+    function fetchFestivalById(id) {
+        return $.getJSON(`https://www.skiddle.com/api/v1/events/${id}/?api_key=${SKIDDLE_API_KEY}`);
+    }
+
+    // Load featured festivals into carousel
+    function loadFeaturedFestivals() {
+        const requests = FEATURED_FESTIVALS.map(id => fetchFestivalById(id)); // FEATURED_FESTIVALS listed at the top of JavaScript
+
+        Promise.all(requests) // Using the Promise.all() static method which takes an iterable of promises as input and returns a single Promise
+            .then(results => {
+                const $carouselInner = $("#featured-carousel-inner");
+
+                results.forEach((data, index) => {
+                    const event = data.results;
+
+                    const dateObj = new Date(event.date);
+                    const formattedDate = dateObj.toLocaleDateString("en-GB"); // Formatting date in GB format
+
+                    const artists = event.artists?.map(a => a.name).join(", ");
+
+                    // Building the corousel items using HTML
+                    const item = `
+                        <div class="carousel-item ${index === 0 ? "active" : ""}">
+                            <img src="${event.largeimageurl || event.imageurl}" class="d-block w-100" alt="${event.eventname}">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5>${event.eventname}</h5>
+                                <p><strong>${event.venue?.name}</strong> – ${event.venue?.town} • ${formattedDate}</p>
+                                <p><strong>Lineup:</strong> ${artists}</p>
+                            </div>
+                        </div>
+                    `;
+
+                    $carouselInner.append(item); 
+                });
+            })
+            .catch(err => console.error("Featured festival error:", err)); // Error handling
+    }
+
+    // Only load featured festivals on discover page
+    if (window.location.pathname.includes("discover.html")) {
+        loadFeaturedFestivals();
+    }
 
 });
