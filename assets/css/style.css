@@ -57,6 +57,17 @@ body {
     font-size: 0.8rem;
 }
 
+/* Footer top divider */
+.footer-top-border {
+    border-top: 2.5px solid var(--secondary-color);
+}
+
+/* Vertical divider between footer columns */
+.footer-col-divider {
+    border-right: 2.5px solid var(--secondary-color);
+}
+
+
 /* Footer section social media links */
 .social-media-links a {
     color: var(--secondary-color);
@@ -299,5 +310,9 @@ body {
         align-items: center;
         text-align: center;
     }
+    .footer-col-divider {
+        border-right: none;
+    }
+
 }
 
