@@ -64,6 +64,8 @@ $(document).ready(function () {
             return; 
         }
         
+        const ukOnly = $("#uk-only-toggle").is(":checked"); // The UK-only toggle on search page
+
         $resultsDiv.empty();
         $statusDiv.text(`Searching for "${query}"…`);
 
@@ -81,8 +83,9 @@ $(document).ready(function () {
     limit: "100", //the limit is stated on the Skiddle API GitHub documentation 
     order: "date"
     };
-
+    
     const url = "https://www.skiddle.com/api/v1/events/search/?" + $.param(params); // turns the object into a query string 
+
 
     // -------------------------------------
     // Search bar code utilising Skiddle API 
@@ -123,6 +126,12 @@ $(document).ready(function () {
                 break;
             default:
                 filtered = data.results;
+        }
+
+        if (ukOnly) { // If the UK‑only toggle is active, keep only events whose venue.country is "GB". The Skiddle API holds venue.country data for each festival
+        filtered = filtered.filter(event =>
+            event.venue?.country?.toUpperCase() === "GB"
+            );
         }
 
         if (filtered.length === 0) { 

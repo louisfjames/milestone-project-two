@@ -67,7 +67,6 @@ body {
     border-right: 2.5px solid var(--secondary-color);
 }
 
-
 /* Footer section social media links */
 .social-media-links a {
     color: var(--secondary-color);
@@ -310,9 +309,9 @@ body {
         align-items: center;
         text-align: center;
     }
+
     .footer-col-divider {
         border-right: none;
     }
-
 }
 
