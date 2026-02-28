@@ -1,3 +1,5 @@
+/* ============ Website Wide Styles ============ */
+
 /* CSS variables */
 :root {
     --primary-color: #251F1E; /* brown‑black */
@@ -40,6 +42,35 @@ body {
     background-clip: text, border-box;
     -webkit-text-fill-color: transparent; /* Made the text transparent so the gradient becomes the visible*/
 }
+
+/* Spacing between the results section and footer section*/
+.results-spacing {
+    margin-bottom: 6rem;
+}
+
+/* Footer section */
+.footer-header {
+    font-size: 1.7rem;
+}
+
+.footer-text {
+    font-size: 0.8rem;
+}
+
+/* Footer section social media links */
+.social-media-links a {
+    color: var(--secondary-color);
+    font-size: 1.3rem;
+    padding: 10px;
+    transition: 0.3s ease; /* smooth animation for hover */
+}
+
+.social-media-links a:hover {
+    color: var(--highlight-color);
+}
+
+
+/* ============ Search Page Styles ============ */
 
 /* Search bar */
 #search-box {
@@ -110,30 +141,6 @@ body {
     outline: none !important; /* removes browser outline */
 }
 
-/* Home button on 404.html - had to replicate id to allow bootstrap css to still work */ 
-#home-btn {
-    background-color: transparent;
-    border-color: var(--secondary-color);
-    border: 2.5px solid var(--secondary-color);
-    border-radius: 40px;
-    color: var(--secondary-color)!important;
-}
-
-#home-btn:hover {
-    background: linear-gradient(to right, var(--highlight-color), var(--secondary-highlight-color))!important;
-    border-color: var(--secondary-highlight-color);
-    color: var(--primary-color)!important;
-}
-
-#home-btn:focus,
-#home-btn:active,
-#home-btn:focus-visible {
-    background: linear-gradient(to right, var(--highlight-color), var(--secondary-highlight-color))!important;
-    border-color: var(--secondary-highlight-color)!important;
-    box-shadow: none !important; /* removes Bootstrap blue glow */
-    outline: none !important; /* removes browser outline */
-}
-
 /* Results section of search page */
 .results-grid {
     padding: 20px;
@@ -171,6 +178,7 @@ body {
 
 /* event-lineup class - NOT YET USED & SHOULD BE REMOVED FROM CSS AND JS IF NOT NEEDED */
 
+
 /* Tickets / Skiddle button on card container*/
 .event-button {
     background-color: transparent;
@@ -204,34 +212,85 @@ body {
     font-weight: bold;
 }
 
-/* Spacing between the results section and footer section*/
-.results-spacing {
-    margin-bottom: 6rem;
+
+/* ============ FAQ Page Styles ============ */
+
+/* Overall accordion container */
+.faq-accordion {
+    background: var(--secondary-color);
+    border: 2.5px solid var(--secondary-color);
+    border-radius: 20px;
+    color: var(--primary-color);
 }
 
-/* Footer section */
-.footer-header {
-    font-size: 1.7rem;
+/* Style the accordion body to match the header */
+.faq-accordion .accordion-body {
+    background: var(--secondary-color);
+    color: var(--primary-color);
 }
 
-.footer-text {
-    font-size: 0.8rem;
+/* Remove white corners by matching accordion-item to variables */
+.faq-accordion .accordion-item {
+    background: var(--secondary-color) !important;
+    border: none;
+    border-radius: 20px !important;
 }
 
-/* Footer section social media links*/
-.social-media-links a {
-    color: var(--secondary-color);
-    font-size: 1.3rem;
-    padding: 10px;
-    transition: 0.3s ease; /* smooth animation for hover */
+/* Add primary-color divider between each question */
+.faq-accordion .accordion-item {
+    border-top: 2.5px solid var(--primary-color);
 }
 
-.social-media-links a:hover {
-    color: var(--highlight-color);
+/* Removes border-top from first question otherwise it adds in extra white line  */
+.faq-accordion .accordion-item:first-of-type {
+    border-top: none;
+}
+
+/* Style the accordion headers + remove Bootstrap defaults */
+.faq-accordion .accordion-button {
+    background: var(--secondary-color) !important;
+    color: var(--primary-color) !important;
+    border-radius: 20px !important;
+    box-shadow: none !important;
+}
+
+/* Remove Bootstrap’s blue focus highlight */
+.faq-accordion .accordion-button:focus,
+.faq-accordion .accordion-button:active,
+.faq-accordion .accordion-button:focus-visible {
+    box-shadow: none !important;
+    outline: none !important;
 }
 
 
-/* Media queries */
+/* ============ 404 Page Styles ============ */
+
+/* Home button on 404.html - had to replicate id to allow bootstrap css to still work */ 
+#home-btn {
+    background-color: transparent;
+    border-color: var(--secondary-color);
+    border: 2.5px solid var(--secondary-color);
+    border-radius: 40px;
+    color: var(--secondary-color)!important;
+}
+
+#home-btn:hover {
+    background: linear-gradient(to right, var(--highlight-color), var(--secondary-highlight-color))!important;
+    border-color: var(--secondary-highlight-color);
+    color: var(--primary-color)!important;
+}
+
+#home-btn:focus,
+#home-btn:active,
+#home-btn:focus-visible {
+    background: linear-gradient(to right, var(--highlight-color), var(--secondary-highlight-color))!important;
+    border-color: var(--secondary-highlight-color)!important;
+    box-shadow: none !important; /* removes Bootstrap blue glow */
+    outline: none !important; /* removes browser outline */
+}
+
+
+/* ============ Media Queries ============ */
 
 /* Small devices (mobile, 768px and below) */
 @media (max-width: 768px) {
@@ -241,3 +300,4 @@ body {
         text-align: center;
     }
 }
+
