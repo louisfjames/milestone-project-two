@@ -6,6 +6,9 @@
     --secondary-color: #eff0e2; /* pale yellow / cream */
     --highlight-color: #C65A5A; /* warm red */
     --secondary-highlight-color: #F2C94C; /* golden yellow */
+    --third-highlight-color: #e84f4f; /* alternative red colour */
+    --fourth-highlight-color: #d0b566; /* alternative yellow colour */
+    --fifth-highlight-color: #D99B9B; /* alternative red colour used for titles */
 }
 
 /* Global styles */
@@ -41,6 +44,35 @@ body {
     -webkit-background-clip: text, border-box; /* Text layer clipped to text and underline layer clipped to border area */
     background-clip: text, border-box;
     -webkit-text-fill-color: transparent; /* Made the text transparent so the gradient becomes the visible*/
+}
+
+/* Home page and sub page titles */
+.title.slide {
+  font-weight: 900;
+  font-size: clamp(48px, 14vw, 96px);
+  background: linear-gradient(90deg, var(--highlight-color), var(--secondary-highlight-color), var(--third-highlight-color), var(--fourth-highlight-color), var(--fifth-highlight-color));
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: slide 7s linear infinite;
+}
+
+@keyframes slide {
+  0%{ background-position: 0% 50%; }
+  50%{ background-position: 100% 50%; }
+  100%{ background-position: 0% 50%; }
+}
+
+.page-title {
+  font-weight: 900;
+  font-size: clamp(40px, 10vw, 80px); /* reduce page title size for Discover and FAQ pages*/
+  background-image: linear-gradient(to right, var(--fifth-highlight-color), var(--secondary-highlight-color));
+  background-repeat: no-repeat;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
 }
 
 /* Spacing between the results section and footer section*/
@@ -314,4 +346,3 @@ body {
         border-right: none;
     }
 }
-
