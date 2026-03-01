@@ -8,14 +8,14 @@
 $(document).ready(function () {
 
     // API key stored as const as will need throughout code
-    const SKIDDLE_API_KEY = "481b24e5efaa9cbb9433c9119edda0d9";
+    const SKIDDLE_API_KEY = "481b24e5efaa9cbb9433c9119edda0d9"; // API Key obtained through Skiddle directly
 
     // Global constants
     const ARTIST_CAP = 10; // To allow for cap on artists shown in lineup on searches
 
     // Featured festivals for Discover page - this can be updated as required
     const FEATURED_FESTIVALS = [
-    "41408774", // Boomtown
+    "41408774", // Boomtown Festival
     "41496625", // TRNSMT Festival
     "41414028", // Reading Festival
     "41490996"  // All Points East
@@ -28,7 +28,7 @@ $(document).ready(function () {
     const $statusDiv = $("#status");
     const $modeToggle = $("#mode-toggle"); 
 
-    // Allows user to hit enter on search bar
+    // Allows user to use enter on keyboard to activate search bar
     $searchBox.on("keydown", function (enter) {
         if (enter.key === "Enter") {
             enter.preventDefault();
@@ -36,7 +36,7 @@ $(document).ready(function () {
         }
     });
     
-    // 'Read More' Click Handler (after loading search results) - Needs to go before search bar otherwise ther 'read more' toggle will cancel itself out on a second search
+    // 'Read More' Click Handler (found within card containers after searching) - Needs to go before search bar otherwise ther 'read more' toggle will cancel itself out on a second search
     $resultsDiv.on("click", ".read-more-link", function () {
         const $btn = $(this);
         const $hidden = $btn.siblings(".more-artists");
@@ -58,7 +58,7 @@ $(document).ready(function () {
         if (query === "") {
             const label = mode === "artist" ? "an artist name"
                     : mode === "festival" ? "a festival name"
-                    :  "a city"; // default set to "city" as "artist" and "festival" are listed above so no need to list "city" in code
+                    :  "a city"; // default mode set to "city" as "artist" and "festival" are listed above so no need to list "city" in code
 
             $statusDiv.text(`Please enter ${label}.`); 
             return; 
@@ -77,10 +77,10 @@ $(document).ready(function () {
     const params = {
     api_key: SKIDDLE_API_KEY,
     keyword: query,
-    eventcode: "FEST", // This ensures that only festivals are called to the website
+    eventcode: "FEST", // This ensures that only festivals are called to the website as Skiddle API also has other categories of events
     minDate: today,
     description: "1",
-    limit: "100", //the limit is stated on the Skiddle API GitHub documentation 
+    limit: "100", // This limit is stated on the Skiddle API GitHub documentation 
     order: "date"
     };
     
@@ -143,7 +143,7 @@ $(document).ready(function () {
             const $card = $("<div>").addClass("event-card"); // Creating an card container for each festival 
             // Adding the festival image to card container 
             const $img = $("<img>") 
-                .attr("src", event.largeimageurl || event.imageurl || "https://via.placeholder.com/140?text=No+Image") // Good practice to include placeholder link in case API doesn't return an image
+                .attr("src", event.largeimageurl)
                 .attr("alt", event.eventname);
 
             // Creating a container for the text 
