@@ -207,6 +207,11 @@ body {
   align-items: center;
 }
 
+/* Rounding edges of festival posters on festival cards */
+.event-card img {
+  border-radius: 7px;           
+}
+
 /* Festival name on card container */
 .event-info h2 {
     margin-bottom: 0.75rem; /* space under the title */
