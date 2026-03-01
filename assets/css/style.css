@@ -1,7 +1,11 @@
 /* ============ Website Wide Styles ============ */
 
+/* Google Fonts import */
+@import url('https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400..700;1,400..700&family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Manrope:wght@200..800&family=Oswald:wght@200..700&display=swap');
+
 /* CSS variables */
 :root {
+    --primary-font: "Cabin", sans-serif;
     --primary-color: #251F1E; /* brown‑black */
     --secondary-color: #eff0e2; /* pale yellow / cream */
     --highlight-color: #C65A5A; /* warm red */
@@ -15,6 +19,7 @@
 body {
     color: var(--secondary-color);
     background-color: var(--primary-color);
+    font-family: var(--primary-font);
 }
 
 /* Nav bar */
