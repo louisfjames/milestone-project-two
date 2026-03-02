@@ -251,6 +251,10 @@ body {
     margin-bottom: 0.75rem; /* space under location/date */
 }
 
+.event-meta span:first-child {
+    margin-right: 1rem; /* create space between location/date */ 
+}
+
 /* Festival info on card container */
 .event-description {
     margin-bottom: 0.75rem; /* space under the info section */
@@ -389,6 +393,10 @@ body {
         flex-direction: column;
         align-items: center;
         text-align: center;
+    }
+
+    .event-meta span:first-child {
+        margin-right: 0rem;
     }
 
 }
