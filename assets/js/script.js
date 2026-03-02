@@ -158,9 +158,11 @@ $(document).ready(function () {
             const formattedDate = dateObj.toLocaleDateString("en-GB");  // Ensures the date is in the UK standard format
 
             const $meta = $("<div>") 
-                .addClass("event-meta")
-                .html(`<i class="fa-solid fa-location-dot"></i> ${event.venue?.name || "Unknown venue"} – ${event.venue?.town || ""} &nbsp;&nbsp; <i class="fa-solid fa-calendar-day"></i> ${formattedDate}`);                
-                // Ensures venue, location and date are included in metadata
+                .addClass("event-meta") // Ensures venue, location and date are included in metadata.
+                .html(`
+                    <span><i class="fa-solid fa-location-dot"></i> ${event.venue?.name || "Unknown venue"} – ${event.venue?.town || ""}</span>
+                    <span><i class="fa-solid fa-calendar-day"></i> ${formattedDate}</span>
+                `); // Used <span> to allow for control when styling for small screens.
             
             // Adding festival description to card container
             const $desc = $("<p>") 
