@@ -144,6 +144,20 @@ body {
     outline: none; /* removes browser outline */
 }
 
+/* Cancel button in search bar - turning it from grey to white using solution provided by Copilot */
+.search-clear::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+  height: 16px;
+  width: 16px;
+  cursor: pointer;
+  opacity: 0.7;
+  background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%23ffffff'><path d='M3.3 3.3l9.4 9.4m0-9.4l-9.4 9.4' stroke='%23ffffff' stroke-width='2' stroke-linecap='round'/></svg>") no-repeat center;
+}
+
+.search-clear::-webkit-search-cancel-button:hover {
+  opacity: 1;
+}
+
 /* Search mode toggle */
 #mode-toggle {
     max-width: 300px;
@@ -151,6 +165,19 @@ body {
     border: 3px solid var(--secondary-color);
     color: var(--secondary-color)!important;
     border-radius: 23px;
+
+    /* Remove native Bootstrap arrow */
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+
+    /* Add custom white arrow - solution to problem provided by Copilot similar to search bar cancel button */
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 20 20' fill='white'><path d='M5.5 7l4.5 4.5L14.5 7'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    background-size: 24px;
+    padding-right: 2.5rem; /* space for arrow */
+
 }
 
 #mode-toggle option { 
@@ -164,7 +191,8 @@ body {
     outline: none; /* removes browser outline */
 }
 
-/* Search button on index.html */
+
+/* Search button */
 #search-btn {
     background-color: transparent;
     border-color: var(--secondary-color);
@@ -254,7 +282,7 @@ body {
 
 /* Read more link included within festival card */
 .read-more-link {
-    color: var(--secondary-highlight-color); 
+    color: var(--fifth-highlight-color); 
     font-weight: 600;
     text-decoration: none;
     text-decoration: underline;
