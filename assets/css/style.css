@@ -51,6 +51,11 @@ body {
     -webkit-text-fill-color: transparent; /* Made the text transparent so the gradient becomes the visible*/
 }
 
+.navbar-logo {
+    height: 45px;
+    width: auto;
+}
+
 /* Home page and sub page titles */
 .title.slide {
   font-weight: 900;
