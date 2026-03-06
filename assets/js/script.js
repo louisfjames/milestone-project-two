@@ -254,12 +254,13 @@ $(document).ready(function () {
                     const dateObj = new Date(event.date);
                     const formattedDate = dateObj.toLocaleDateString("en-GB"); // Formatting date in GB format
 
-                    // Build lineup exactly like other cards
+                    // Build lineup exactly like other cards, apart from only using the top ten headliners rather than the full lineup
                     const artists = event.artists || [];
                     const processedArtists = artists.map(a => a.name);
 
+                    const description = event.description || "No description available.";
+
                     const visibleArtists = processedArtists.slice(0, ARTIST_CAP).join(", ");
-                    const hiddenArtists = processedArtists.slice(ARTIST_CAP).join(", ");
 
                     let lineupHTML = `<strong>Headliners:</strong> ${visibleArtists}`; // Only want to use the first 10 artists on the lineup for the carousel due to formatting
 
@@ -292,6 +293,10 @@ $(document).ready(function () {
                                                 ${formattedDate}
                                             </span>
                                         </div>
+
+                                        <p class="event-description">
+                                            <strong>Info:</strong> ${description}
+                                        </p>
 
                                         <p class="event-lineup">
                                             ${lineupHTML}
