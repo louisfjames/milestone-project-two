@@ -91,7 +91,7 @@ body {
 }
 
 .footer-text {
-    font-size: 0.8rem;
+    font-size: 0.85rem;
 }
 
 /* Footer top divider */
@@ -299,53 +299,41 @@ body {
 
 /* ============ FAQ Page Styles ============ */
 
-/* Overall accordion container */
-.faq-accordion {
-    background: var(--secondary-color);
-    border: 2.5px solid var(--secondary-color);
-    border-radius: 20px;
-    color: var(--primary-color);
-}
-
 /* Style the accordion body to match the header */
 .faq-accordion .accordion-body {
-    background: var(--secondary-color);
-    color: var(--primary-color);
+    background: var(--primary-color);
+    color: var(--secondary-color);
 }
 
 /* Remove white corners by matching accordion-item to variables */
 .faq-accordion .accordion-item {
-    background: var(--secondary-color) !important;
+    background: var(--primary-color) !important;
     border: none;
     border-radius: 20px !important;
 }
 
-/* Add primary-color divider between each question */
-.faq-accordion .accordion-item {
-    border-top: 2.5px solid var(--primary-color);
+/* Makes accordion arrow white and then pale-orange */
+.faq-accordion .accordion-button::after {
+    filter: invert(1); /* Inversion used as arrows are already black and blue, so this turns them white & orange with least amount of code */
 }
 
-/* Removes border-top from first question otherwise it adds in extra white line  */
-.faq-accordion .accordion-item:first-of-type {
-    border-top: none;
+/* Add primary-color divider between each question */
+.faq-accordion .accordion-item {
+    border-top: 2.5px solid var(--secondary-color);
+}
+
+/* Add a border under the final accordion item */
+.faq-accordion .accordion-item:last-of-type {
+    border-bottom: 2.5px solid var(--secondary-color);
 }
 
 /* Style the accordion headers + remove Bootstrap defaults */
 .faq-accordion .accordion-button {
-    background: var(--secondary-color) !important;
-    color: var(--primary-color) !important;
+    background: var(--primary-color) !important;
+    color: var(--secondary-color) !important;
     border-radius: 20px !important;
     box-shadow: none !important;
 }
-
-/* Remove Bootstrap’s blue focus highlight */
-.faq-accordion .accordion-button:focus,
-.faq-accordion .accordion-button:active,
-.faq-accordion .accordion-button:focus-visible {
-    box-shadow: none !important;
-    outline: none !important;
-}
-
 
 /* ============ 404 Page Styles ============ */
 

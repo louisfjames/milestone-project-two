@@ -295,5 +295,5 @@ $(document).ready(function () {
         loadFeaturedFestivals();
     }
 
-    
+
 });
