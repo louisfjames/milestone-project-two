@@ -297,24 +297,45 @@ body {
 }
 
 /* ============ Discover Page Styles ============ */
-.spotlight-card {
-  border-width: 3px;
-  padding: 60px;
-  background: red;
-  box-shadow: 0 0 20px rgba(0,0,0,0.15);
+
+/* Styling the Featured Festivals cards on the carousel */
+.featured-card {
+    max-width: 1300px;
+    max-height: 600px;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+}
+
+.featured-card .event-image {
+    width: 216px;
+    height: auto;
+    object-fit: cover;
+}
+
+.featured-card .event-info {
+    flex: 1; 
 }
 
 .event-card {
     position: relative;
 }
 
+/* Arrows on Featured Festivals carousel */
+.carousel-control-prev,
+.carousel-control-next {
+    width: 5rem;          /* pushes arrows outward */
+}
+
+/* Date on Lineup Announcement container */
 .announcement-badge {
     position: absolute;
     top: 0.75rem;
     right: 0.75rem;
     font-size: 0.85rem;
     opacity: 0.8;
-    background: var(--gradient-1); /* or a subtle neutral */
+    background: var(--gradient-1);
     padding: 4px 8px;
     border-radius: 6px;
     color: var(--secondary-color);
@@ -411,4 +432,9 @@ body {
         margin-right: 0rem;
     }
 
+    .featured-card {
+        min-height: 650px; 
+        height: auto;
+    }
+    
 }

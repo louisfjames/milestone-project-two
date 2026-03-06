@@ -254,43 +254,57 @@ $(document).ready(function () {
                     const dateObj = new Date(event.date);
                     const formattedDate = dateObj.toLocaleDateString("en-GB"); // Formatting date in GB format
 
-                    const artists = event.artists?.map(a => a.name).join(", ");
+                    // Build lineup exactly like other cards
+                    const artists = event.artists || [];
+                    const processedArtists = artists.map(a => a.name);
 
-                    // Building the corousel items using HTML
+                    const visibleArtists = processedArtists.slice(0, ARTIST_CAP).join(", ");
+                    const hiddenArtists = processedArtists.slice(ARTIST_CAP).join(", ");
+
+                    let lineupHTML = `<strong>Headliners:</strong> ${visibleArtists}`; // Only want to use the first 10 artists on the lineup for the carousel due to formatting
+
+                    // Ticket button
+                    const ticketURL = event.tickets || event.link;
+                    const ticketButton = `
+                        <button class="event-button" onclick="window.open('${ticketURL}', '_blank')">
+                            ${event.tickets ? "Buy Tickets" : "Check Tickets on Skiddle"}
+                        </button>
+                    `;
+
+                    // Build carousel item using full card container
                     const item = `
                         <div class="carousel-item ${index === 0 ? "active" : ""}">
-                            <div class="container py-4">
-                                <div class="row align-items-center">
-                                    
-                                    <!-- Festival poster to the left of the card container -->
-                                    <div class="col-md-4 text-center">
-                                        <img src="${event.largeimageurl || event.imageurl}" 
-                                            class="img-fluid rounded event-poster" 
-                                            alt="${event.eventname}">
-                                    </div>
+                            <div class="d-flex justify-content-center py-4">
+                                <div class="event-card featured-card">
 
-                                    <!-- Festival details to the left of the card container -->
-                                    <div class="col-md-8 pt-3">
-                                        <h3 class="mb-2">${event.eventname}</h3>
+                                    <img src="${event.largeimageurl || event.imageurl}" 
+                                        alt="${event.eventname}" 
+                                        class="event-image">
 
-                                        <p class="event-meta mb-2">
-                                            <i class="fa-solid fa-location-dot"></i> 
-                                            ${event.venue?.name || "Unknown venue"} – ${event.venue?.town || ""}
-                                            &nbsp;&nbsp;
-                                            <i class="fa-solid fa-calendar-day"></i> 
-                                            ${formattedDate}
+                                    <div class="event-info">
+                                        <h2>${event.eventname}</h2>
+
+                                        <div class="event-meta">
+                                            <span><i class="fa-solid fa-location-dot"></i> 
+                                                ${event.venue?.name || "Unknown venue"} – ${event.venue?.town || ""}
+                                            </span>
+                                            <span><i class="fa-solid fa-calendar-day"></i> 
+                                                ${formattedDate}
+                                            </span>
+                                        </div>
+
+                                        <p class="event-lineup">
+                                            ${lineupHTML}
                                         </p>
 
-                                        <p class="event-lineup mb-2">
-                                            <strong>Lineup:</strong> ${artists}
-                                        </p>
-
+                                        ${ticketButton}
                                     </div>
+
                                 </div>
                             </div>
                         </div>
-                    `;
-
+                    `;                            
+                    
                     $carouselInner.append(item); 
                 });
             })
