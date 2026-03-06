@@ -13,12 +13,17 @@ $(document).ready(function () {
     // Global constants
     const ARTIST_CAP = 10; // To allow for cap on artists shown in lineup on searches
 
-    // Featured festivals for Discover page - this can be updated as required
+    // Featured festivals for Discover page - This is manually curated list
     const FEATURED_FESTIVALS = [
     "41408774", // Boomtown Festival
     "41496625", // TRNSMT Festival
     "41414028", // Reading Festival
     "41490996"  // All Points East
+    ];
+
+    // Lineup announcement for Discover page - This is manually curated similar to FEATURED_FESTIVALS
+    const LINEUP_ANNOUNCEMENTS = [
+    "41398417" // Green Man Festival
     ];
 
     // DOM Elements
@@ -37,9 +42,9 @@ $(document).ready(function () {
     });
     
     // 'Read More' Click Handler (found within card containers after searching) - Needs to go before search bar otherwise ther 'read more' toggle will cancel itself out on a second search
-    $resultsDiv.on("click", ".read-more-link", function () {
+    $(document).on("click", ".read-more-link", function () {
         const $btn = $(this);
-        const $hidden = $btn.siblings(".more-artists");
+        const $hidden = $btn.prev(".more-artists");
 
         if ($hidden.is(":visible")) {
             $hidden.slideUp(500);
@@ -289,7 +294,99 @@ $(document).ready(function () {
             .catch(err => console.error("Featured festival error:", err)); // Error handling
     }
 
-    // Section 3 - Generate a random festival card for 'Festival Spotlight'
+    // Second Section - Load event into Lineup Announcements section
+    function loadLineupAnnouncements() {
+        const eventID = LINEUP_ANNOUNCEMENTS[0]; // This is manually curated at the top of script.js
+
+        const url = `https://www.skiddle.com/api/v1/events/${eventID}/?api_key=${SKIDDLE_API_KEY}`;
+
+        $.getJSON(url)
+            .done(data => {
+                const event = data.results;
+
+                if (!event) {
+                    $("#lineup-announcements").html("<p>Unable to load lineup announcement.</p>");
+                    return;
+                }
+
+                // Build card exactly like your search results
+                const $card = $("<div>").addClass("event-card");
+
+                // Image
+                const $img = $("<img>")
+                    .attr("src", event.largeimageurl || event.imageurl)
+                    .attr("alt", event.eventname);
+
+                // Info container
+                const $info = $("<div>").addClass("event-info");
+
+                // Title
+                const $title = $("<h2>").text(event.eventname);
+
+                // Date formatting
+                const dateObj = new Date(event.date);
+                const formattedDate = dateObj.toLocaleDateString("en-GB");
+
+                // Metadata
+                const $meta = $("<div>")
+                    .addClass("event-meta")
+                    .html(`
+                        <span><i class="fa-solid fa-location-dot"></i> ${event.venue?.name || "Unknown venue"} – ${event.venue?.town || ""}</span>
+                        <span><i class="fa-solid fa-calendar-day"></i> ${formattedDate}</span>
+                    `);
+
+                // Description
+                const $desc = $("<p>")
+                    .addClass("event-description")
+                    .html(`<strong>Info:</strong> ${event.description || "No description available."}`);
+
+                // Lineup
+                const artists = event.artists || [];
+                const processedArtists = artists.map(a => a.name);
+
+                const visibleArtists = processedArtists.slice(0, ARTIST_CAP).join(", ");
+                const hiddenArtists = processedArtists.slice(ARTIST_CAP).join(", ");
+
+                let lineupHTML = `<strong>Lineup:</strong> ${visibleArtists}`;
+
+                if (hiddenArtists.length > 0) {
+                    lineupHTML += `
+                        <span class="more-artists" style="display:none;">, ${hiddenArtists}</span>
+                        <a class="read-more-link">Read more</a>
+                    `;
+                }
+
+                const $lineup = $("<p>")
+                    .addClass("event-lineup")
+                    .html(lineupHTML);
+
+                // Tickets button
+                const ticketURL = event.tickets || event.link;
+
+                const $ticketsLink = $("<button>")
+                    .addClass("event-button")
+                    .text(event.tickets ? "Buy Tickets" : "Check Tickets on Skiddle")
+                    .on("click", () => window.open(ticketURL, "_blank"));
+
+                // Assemble card
+                $info.append($title, $meta, $desc, $lineup, $ticketsLink);
+                $card.append($img, $info);
+
+                // Insert into announcements section
+                $("#lineup-announcements").empty().append($card);
+
+                // Fallback for no lineup
+                if (artists.length === 0) {
+                    $lineup.html("<strong>Lineup:</strong> <i>Lineup coming soon.</i>");
+                }
+            })
+            .fail(err => {
+                console.error("Lineup announcement API error:", err);
+                $("#lineup-announcements").html("<p>Error loading lineup announcement.</p>");
+            });
+    }
+
+    // Third Section - Generate a random festival card for 'Festival Spotlight'
     function loadRandomFestival() {
         const today = new Date().toISOString().split("T")[0];
 
@@ -394,6 +491,7 @@ $(document).ready(function () {
     if (window.location.pathname.includes("discover.html")) {
         loadFeaturedFestivals();
         loadRandomFestival();
+        loadLineupAnnouncements();
     }
 
 });
