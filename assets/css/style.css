@@ -296,6 +296,14 @@ body {
     font-weight: bold;
 }
 
+/* ============ Discover Page Styles ============ */
+.spotlight-card {
+  border-width: 3px;
+  padding: 60px;
+  background: red;
+  box-shadow: 0 0 20px rgba(0,0,0,0.15);
+}
+
 
 /* ============ FAQ Page Styles ============ */
 

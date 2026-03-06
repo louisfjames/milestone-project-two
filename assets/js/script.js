@@ -153,7 +153,6 @@ $(document).ready(function () {
             const $title = $("<h2>").text(event.eventname); 
 
             // Adding metadata to card container 
-
             const dateObj = new Date(event.date);
             const formattedDate = dateObj.toLocaleDateString("en-GB");  // Ensures the date is in the UK standard format
 
@@ -233,7 +232,7 @@ $(document).ready(function () {
         return $.getJSON(`https://www.skiddle.com/api/v1/events/${id}/?api_key=${SKIDDLE_API_KEY}`);
     }
 
-    // Load featured festivals into carousel using card containers
+    // First Section - Load 'Featured Festivals' into carousel using card containers
     function loadFeaturedFestivals() {
         const requests = FEATURED_FESTIVALS.map(id => fetchFestivalById(id)); // FEATURED_FESTIVALS listed at the top of JavaScript
 
@@ -290,10 +289,111 @@ $(document).ready(function () {
             .catch(err => console.error("Featured festival error:", err)); // Error handling
     }
 
+    // Section 3 - Generate a random festival card for 'Festival Spotlight'
+    function loadRandomFestival() {
+        const today = new Date().toISOString().split("T")[0];
+
+        const params = {
+            api_key: SKIDDLE_API_KEY,
+            eventcode: "FEST",
+            minDate: today,
+            limit: "100",
+            description: "1",
+            order: "trending" // This filter used to make sure larger random festivals are selected
+        };
+
+        const url = "https://www.skiddle.com/api/v1/events/search/?" + $.param(params);
+
+        // This code replicates the card containers created for the search function
+        $.getJSON(url)
+            .done(data => {
+                if (!data.results || data.results.length === 0) {
+                    $("#random-festival").html("<p>No festivals found.</p>");
+                    return;
+                }
+
+                // UK-only filter
+                let ukFestivals = data.results.filter(event =>
+                    event.venue?.country?.toUpperCase() === "GB"
+                );
+
+                if (ukFestivals.length === 0) {
+                    $("#random-festival").html("<p>No UK festivals found.</p>");
+                    return;
+                }
+
+                // Pick a random UK festival
+                const event = ukFestivals[Math.floor(Math.random() * ukFestivals.length)];
+
+                // Build card exactly like search results
+                const $card = $("<div>").addClass("event-card");
+
+                const $img = $("<img>")
+                    .attr("src", event.largeimageurl || event.imageurl)
+                    .attr("alt", event.eventname);
+
+                const $info = $("<div>").addClass("event-info");
+
+                const $title = $("<h2>").text(event.eventname);
+
+                const dateObj = new Date(event.date);
+                const formattedDate = dateObj.toLocaleDateString("en-GB");
+
+                const $meta = $("<div>")
+                    .addClass("event-meta")
+                    .html(`
+                        <span><i class="fa-solid fa-location-dot"></i> ${event.venue?.name || "Unknown venue"} – ${event.venue?.town || ""}</span>
+                        <span><i class="fa-solid fa-calendar-day"></i> ${formattedDate}</span>
+                    `);
+
+                const $desc = $("<p>")
+                    .addClass("event-description")
+                    .html(`<strong>Info:</strong> ${event.description || "No description available."}`);
+
+                const artists = event.artists || [];
+                const processedArtists = artists.map(a => a.name);
+
+                const visibleArtists = processedArtists.slice(0, ARTIST_CAP).join(", ");
+                const hiddenArtists = processedArtists.slice(ARTIST_CAP).join(", ");
+
+                let lineupHTML = `<strong>Lineup:</strong> ${visibleArtists}`;
+
+                if (hiddenArtists.length > 0) {
+                    lineupHTML += `
+                        <span class="more-artists" style="display:none;">, ${hiddenArtists}</span>
+                        <a class="read-more-link">Read more</a>
+                    `;
+                }
+
+                const $lineup = $("<p>")
+                    .addClass("event-lineup")
+                    .html(lineupHTML);
+
+                const ticketURL = event.tickets || event.link;
+
+                const $ticketsLink = $("<button>")
+                    .addClass("event-button")
+                    .text(event.tickets ? "Buy Tickets" : "Check Tickets on Skiddle")
+                    .on("click", () => {
+                        window.open(ticketURL, "_blank");
+                    });
+
+                $info.append($title, $meta, $desc, $lineup, $ticketsLink);
+                $card.append($img, $info);
+
+                $("#random-festival").empty().append($card);
+
+                if (artists.length === 0) {
+                    $lineup.html("<strong>Lineup:</strong> <i>Lineup coming soon.</i>");
+                }
+            })
+            .fail(err => console.error("Random festival error:", err));
+    }
+    
     // Only load featured festivals on discover page
     if (window.location.pathname.includes("discover.html")) {
         loadFeaturedFestivals();
+        loadRandomFestival();
     }
-
 
 });
