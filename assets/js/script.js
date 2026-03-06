@@ -23,7 +23,10 @@ $(document).ready(function () {
 
     // Lineup announcement for Discover page - This is manually curated similar to FEATURED_FESTIVALS
     const LINEUP_ANNOUNCEMENTS = [
-    "41398417" // Green Man Festival
+        {
+            id: "41398417", // Green Man Festival
+            announced: "2026-03-03" // Date of lineup announcement
+        }
     ];
 
     // DOM Elements
@@ -296,8 +299,11 @@ $(document).ready(function () {
 
     // Second Section - Load event into Lineup Announcements section
     function loadLineupAnnouncements() {
-        const eventID = LINEUP_ANNOUNCEMENTS[0]; // This is manually curated at the top of script.js
-
+        // This section calls Skiddle event number and manually entered date added at the top of script.js
+        const announcement = LINEUP_ANNOUNCEMENTS[0]; 
+        const eventID = announcement.id; 
+        const announcedDate = announcement.announced; 
+        
         const url = `https://www.skiddle.com/api/v1/events/${eventID}/?api_key=${SKIDDLE_API_KEY}`;
 
         $.getJSON(url)
@@ -322,6 +328,15 @@ $(document).ready(function () {
 
                 // Title
                 const $title = $("<h2>").text(event.eventname);
+
+                // Announcement date
+                let $announced = null;
+                if (announcedDate) {
+                    const formattedAnnouncement = new Date(announcedDate).toLocaleDateString("en-GB");
+                    $announced = $("<div>")
+                        .addClass("announcement-badge")
+                        .html(`Announced: ${formattedAnnouncement}`);
+                }
 
                 // Date formatting
                 const dateObj = new Date(event.date);
@@ -369,7 +384,7 @@ $(document).ready(function () {
                     .on("click", () => window.open(ticketURL, "_blank"));
 
                 // Assemble card
-                $info.append($title, $meta, $desc, $lineup, $ticketsLink);
+                $info.append($announced, $title, $meta, $desc, $lineup, $ticketsLink);
                 $card.append($img, $info);
 
                 // Insert into announcements section
