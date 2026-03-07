@@ -39,6 +39,11 @@ Completing JS testing and outlining the results.
 ### Google Chrome Lighthouse
 Completing Google Chrome testing and outlining the results.
 
+- Select elements do not have associated label elements. ('Search By' Mode Toggle)
+- Links do not have a discernible name (Social media links in footer)
+- Background and foreground colors do not have a sufficient contrast ratio. (Email linked in the footer)
+- Buttons do not have an accessible name. (Toggle icon on navbar)
+
 ### Bug Fixes
 This section documents the issues found during development and how each one was resolved. It provides a clear record of problems and fixes highlighted during manual testing.
 
