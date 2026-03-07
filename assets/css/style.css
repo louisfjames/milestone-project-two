@@ -307,7 +307,7 @@ body {
 
 .featured-card {
     max-width: 1300px;
-    max-height: 800px;
+    height: 360px;
     width: 100%;
     margin: 0 auto;
     display: flex;
@@ -328,10 +328,11 @@ body {
     position: relative;
 }
 
+
 /* Arrows on Featured Festivals carousel */
 .carousel-control-prev,
 .carousel-control-next {
-    width: 5rem;          /* pushes arrows outward */
+    width: 5rem; /* pushes arrows outward */
 }
 
 /* Date on Lineup Announcement container */
@@ -439,8 +440,6 @@ body {
     }
 
     .featured-card {
-        min-height: 650px; 
-        height: auto;
+        height: 720px;
     }
-
 }
