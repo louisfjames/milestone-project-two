@@ -15,7 +15,29 @@ This document summarises all testing completed throughout development.
 
 
 ### Acceptance Criteria Testing
-A table of pass/fail against the user story acceptance criteria.
+This table outlines the key user stories and acceptance criteria completed during development. This demonstrates how the website meets the expectations of its target audience and ensures a satisfying user experience.
+
+| User Story | Acceptance Criteria | Status |
+|-----------|---------------------|--------|
+| 1: User Friendly Navigation and Responsive Design (Must-Have) | The website is fully responsive across various devices and screen sizes, including mobile devices. | **✔ PASS** |
+| 1: User Friendly Navigation and Responsive Design (Must-Have) | The structure and navigation are designed for clarity, providing straightforward access to different sections. | **✔ PASS** |
+| 2: Robust Search (Must-Have) | The search accepts user input and returns matching results. | **✔ PASS** |
+| 2: Robust Search (Must-Have) | A search‑mode dropdown (City / Festival / Artist) updates search behaviour and displayed results immediately. | **✔ PASS** |
+| 2: Robust Search (Must-Have) | The UI shows clear states for searching, no results, and errors. | **✔ PASS** |
+| 3: Discover Page (Must-Have) | The Discover page highlights curated festivals (carousel or cards) for easy browsing. | **✔ PASS** |
+| 3: Discover Page (Must-Have) | A Festival Spotlight or Featured card shows detailed lineup information and a clear “View Festival” link. | **✔ PASS** |
+| 3: Discover Page (Must-Have) | A Latest Announced Lineups section lists recently updated lineups. | **✔ PASS** |
+| 4: Helpful Error Recovery Experience (Must-Have) | A custom 404 page exists with themed artwork and a prominent “Return Home” button. | **✔ PASS** |
+| 4: Helpful Error Recovery Experience (Must-Have) | The page explains the error in plain language and offers navigation options. | **✔ PASS** |
+| 4: Helpful Error Recovery Experience (Must-Have) | Using browser back/forward does not leave the site in a broken state. | **✔ PASS** |
+| 5: FAQ Page (Should-Have) | An accessible accordion presents FAQ items and supports keyboard navigation and ARIA roles. | **✔ PASS** |
+| 5: FAQ Page (Should-Have) | The FAQ contains clear, site‑specific explanations about how the website works and how to use key features. | **✔ PASS** |
+| 6: Festival News Feed (Could-Have) | A Festival News section appears on the Discover page and displays recent festival‑related articles with title, source, date, and “Read More” link. | **⌛ NOT YET ADDRESSED** |
+| 6: Festival News Feed (Could-Have) | Articles are automatically filtered to include only festival or lineup‑related content and update at a set interval. | **⌛ NOT YET ADDRESSED** |
+| 6: Festival News Feed (Could-Have) | If the feed cannot load new data, a fallback message is shown and previously cached articles remain visible. | **⌛ NOT YET ADDRESSED** |
+
+ADD WORDING TO EXPLAIN THIS.
+
 
 ### Behaviour Driven Development / Manual Testing
 Explaining what manual testing is and how it's been used.
@@ -40,27 +62,27 @@ Completing JS testing and outlining the results.
 Google Lighthouse is a helpful auditing tool that checks performance, accessibility and best practice issues on a website. It is useful because it gives clear guidance on what needs improving and shows how changes affect the overall quality of the site. The scores receieved for each page have been included below.
 
 <details><summary><i>Home / Search Page Lighthouse Score</i></summary>
-  <img src="assets/docs/home-page-lighthouse.png" alt="Home / search page lighthouse audit score" style="max-width: 800px; width: 100%;">
+  <img src="assets/docs/home-page-lighthouse.png" alt="Home / search page lighthouse audit score" style="max-width: 500px; width: 100%;">
 </details>
 ---
 <details><summary><i>Discover Page Lighthouse Score</i></summary>
-  <img src="assets/docs/discover-page-lighthouse.png" alt="Discover page lighthouse audit score" style="max-width: 800px; width: 100%;">
+  <img src="assets/docs/discover-page-lighthouse.png" alt="Discover page lighthouse audit score" style="max-width: 500px; width: 100%;">
 </details>
 ----
 <details><summary><i>FAQ Page Lighthouse Score</i></summary>
-  <img src="assets/docs/faq-page-lighthouse.png" alt=" FAQ page lighthouse audit score" style="max-width: 800px; width: 100%;">
+  <img src="assets/docs/faq-page-lighthouse.png" alt=" FAQ page lighthouse audit score" style="max-width: 500px; width: 100%;">
 </details>
 ----
 <details><summary><i>404 Page Lighthouse Score</i></summary>
-  <img src="assets/docs/404-page-lighthouse.png" alt="404 page lighthouse audit score" style="max-width: 800px; width: 100%;">
+  <img src="assets/docs/404-page-lighthouse.png" alt="404 page lighthouse audit score" style="max-width: 500px; width: 100%;">
 </details>
 ----
 
-As shown in the extracts above, all pages have received high scores. The Discover Page has a lower performance score, but this was anticipated due to the information loading. Below are the issues raised by Lighthouse that were addressed to ensure high scores (see commit refs: 191c4ae):
-- Select elements do not have associated label elements. ('Search By' Mode Toggle)
+As shown in the extracts above, all pages have received high scores. The Discover Page has a lower performance score, but this was anticipated due to the information loading. Below are the issues raised by Lighthouse that were addressed to ensure high scores (see commit ref 191c4ae):
+- Select elements do not have associated label elements ('Search By' Mode Toggle)
 - Links do not have a discernible name (Social media links in footer)
-- Background and foreground colors do not have a sufficient contrast ratio. (Email linked in the footer)
-- Buttons do not have an accessible name. (Toggle icon on navbar)
+- Background and foreground colors do not have a sufficient contrast ratio (Email linked in the footer)
+- Buttons do not have an accessible name (Toggle icon on navbar)
 
 
 ### Bug Fixes
