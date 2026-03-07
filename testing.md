@@ -48,9 +48,27 @@ Explaining what automated testing is and how it's been used.
 ### HTML Validator 
 - [W3C Validator](https://validator.w3.org/) was used to ensure that web standards are being met and there are no structural issues.
 - This was first used after the development of the first page (home / search page) to ensure errors were not replicated in other pages.
-        <details><summary><i>W3C Validator Testing in Early Development</i></summary>
+      - <details><summary><i>W3C Validator Testing in Early Development</i></summary>
       <img src="assets/docs/w3c-validator-early-development.png" alt="W3C Validator Testing in early development with two errors identified" style="max-width: 800px; width: 100%;">
       </details>
+- This was later used once the build stage of development had concluded. The 
+-----
+<details><summary><i>Home / Search Page HTML Validator</i></summary>
+<img src="assets/docs/home-page-html-validator.png" alt="Home / search page html validation" style="max-width: 400px; width: 100%;">
+</details>
+-----
+<details><summary><i>Discover Page HTML Validator</i></summary>
+<img src="assets/docs/discover-page-html-validator.png" alt="Discover page html validation" style="max-width: 400px; width: 100%;">
+</details>
+-----
+<details><summary><i>FAQ Page HTML Validator</i></summary>
+<img src="#" alt="FAQ page html validation" style="max-width: 400px; width: 100%;">
+</details>
+-----
+<details><summary><i>404 Page HTML Validator</i></summary>
+<img src="#" alt="404 page html validation" style="max-width: 400px; width: 100%;">
+</details>
+-----
 
 ### CSS Validator
 [Jigsaw CSS Validator](https://jigsaw.w3.org/css-validator/) was used to spot syntax mistakes and conflicting rules before they cause unpredictable layouts or styling glitches. There were no issues to fix within my style.css file.
@@ -62,21 +80,21 @@ Completing JS testing and outlining the results.
 Google Lighthouse is a helpful auditing tool that checks performance, accessibility and best practice issues on a website. It is useful because it gives clear guidance on what needs improving and shows how changes affect the overall quality of the site. The scores receieved for each page have been included below.
 
 <details><summary><i>Home / Search Page Lighthouse Score</i></summary>
-  <img src="assets/docs/home-page-lighthouse.png" alt="Home / search page lighthouse audit score" style="max-width: 500px; width: 100%;">
+  <img src="assets/docs/home-page-lighthouse.png" alt="Home / search page lighthouse audit score" style="max-width: 300px; width: 100%;">
 </details>
----
+-----
 <details><summary><i>Discover Page Lighthouse Score</i></summary>
-  <img src="assets/docs/discover-page-lighthouse.png" alt="Discover page lighthouse audit score" style="max-width: 500px; width: 100%;">
+  <img src="assets/docs/discover-page-lighthouse.png" alt="Discover page lighthouse audit score" style="max-width: 300px; width: 100%;">
 </details>
-----
+-----
 <details><summary><i>FAQ Page Lighthouse Score</i></summary>
-  <img src="assets/docs/faq-page-lighthouse.png" alt=" FAQ page lighthouse audit score" style="max-width: 500px; width: 100%;">
+  <img src="assets/docs/faq-page-lighthouse.png" alt=" FAQ page lighthouse audit score" style="max-width: 300px; width: 100%;">
 </details>
-----
+-----
 <details><summary><i>404 Page Lighthouse Score</i></summary>
-  <img src="assets/docs/404-page-lighthouse.png" alt="404 page lighthouse audit score" style="max-width: 500px; width: 100%;">
+  <img src="assets/docs/404-page-lighthouse.png" alt="404 page lighthouse audit score" style="max-width: 300px; width: 100%;">
 </details>
-----
+-----
 
 As shown in the extracts above, all pages have received high scores. The Discover Page has a lower performance score, but this was anticipated due to the information loading. Below are the issues raised by Lighthouse that were addressed to ensure high scores (see commit ref 191c4ae):
 - Select elements do not have associated label elements ('Search By' Mode Toggle)
