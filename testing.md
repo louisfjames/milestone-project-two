@@ -37,12 +37,31 @@ Explaining what automated testing is and how it's been used.
 Completing JS testing and outlining the results.
 
 ### Google Chrome Lighthouse
-Completing Google Chrome testing and outlining the results.
+Google Lighthouse is a helpful auditing tool that checks performance, accessibility and best practice issues on a website. It is useful because it gives clear guidance on what needs improving and shows how changes affect the overall quality of the site. The scores receieved for each page have been included below.
 
+<details><summary><i>Home / Search Page Lighthouse Score</i></summary>
+  <img src="assets/docs/home-page-lighthouse.png" alt="Home / search page lighthouse audit score" style="max-width: 800px; width: 100%;">
+</details>
+---
+<details><summary><i>Discover Page Lighthouse Score</i></summary>
+  <img src="assets/docs/discover-page-lighthouse.png" alt="Discover page lighthouse audit score" style="max-width: 800px; width: 100%;">
+</details>
+----
+<details><summary><i>FAQ Page Lighthouse Score</i></summary>
+  <img src="assets/docs/faq-page-lighthouse.png" alt=" FAQ page lighthouse audit score" style="max-width: 800px; width: 100%;">
+</details>
+----
+<details><summary><i>404 Page Lighthouse Score</i></summary>
+  <img src="assets/docs/404-page-lighthouse.png" alt="404 page lighthouse audit score" style="max-width: 800px; width: 100%;">
+</details>
+----
+
+As shown in the extracts above, all pages have received high scores. The Discover Page has a lower performance score, but this was anticipated due to the information loading. Below are the issues raised by Lighthouse that were addressed to ensure high scores (see commit refs: 191c4ae):
 - Select elements do not have associated label elements. ('Search By' Mode Toggle)
 - Links do not have a discernible name (Social media links in footer)
 - Background and foreground colors do not have a sufficient contrast ratio. (Email linked in the footer)
 - Buttons do not have an accessible name. (Toggle icon on navbar)
+
 
 ### Bug Fixes
 This section documents the issues found during development and how each one was resolved. It provides a clear record of problems and fixes highlighted during manual testing.
