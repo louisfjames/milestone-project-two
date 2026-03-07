@@ -62,13 +62,16 @@ Explaining what automated testing is and how it's been used.
 </details>
 -----
 <details><summary><i>FAQ Page HTML Validator</i></summary>
-<img src="#" alt="FAQ page html validation" style="max-width: 400px; width: 100%;">
+<img src="assets/docs/faq-page-html-validator.png" alt="FAQ page html validation" style="max-width: 400px; width: 100%;">
 </details>
 -----
 <details><summary><i>404 Page HTML Validator</i></summary>
 <img src="#" alt="404 page html validation" style="max-width: 400px; width: 100%;">
 </details>
 -----
+
+- There were errors raised from the use of the Bootsrap accordion on the FAQ page. The validator error happens because a plain <div> is not allowed to use aria-labelledby unless it has a proper ARIA role. The fix is to add role="region" to the collapsible panel so it becomes a valid labelled section for assistive technologies. See commit ref 6cdcc43.
+ 
 
 ### CSS Validator
 [Jigsaw CSS Validator](https://jigsaw.w3.org/css-validator/) was used to spot syntax mistakes and conflicting rules before they cause unpredictable layouts or styling glitches. There were no issues to fix within my style.css file.
