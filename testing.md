@@ -76,8 +76,16 @@ Explaining what automated testing is and how it's been used.
 ### CSS Validator
 [Jigsaw CSS Validator](https://jigsaw.w3.org/css-validator/) was used to spot syntax mistakes and conflicting rules before they cause unpredictable layouts or styling glitches. There were no issues to fix within my style.css file.
 
-### Jest / JSHint / JavaScript Validator
+### JSHint / JavaScript Validator
 Completing JS testing and outlining the results.
+
+Need to use: /* jshint esversion: 11 */ for JSHint
+
+
+Also, all javascript code has been tested with: Google Developer Tools Console Tab.
+- By displaying JavaScript errors and warnings for debugging.
+- Executing JavaScript code from the console .
+
 
 ### Google Chrome Lighthouse
 Google Lighthouse is a helpful auditing tool that checks performance, accessibility and best practice issues on a website. It is useful because it gives clear guidance on what needs improving and shows how changes affect the overall quality of the site. The scores receieved for each page have been included below.
