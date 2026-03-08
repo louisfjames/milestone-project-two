@@ -48,10 +48,12 @@ Explaining what automated testing is and how it's been used.
 ### HTML Validator 
 - [W3C Validator](https://validator.w3.org/) was used to ensure that web standards are being met and there are no structural issues.
 - This was first used after the development of the first page (home / search page) to ensure errors were not replicated in other pages.
-      - <details><summary><i>W3C Validator Testing in Early Development</i></summary>
-      <img src="assets/docs/w3c-validator-early-development.png" alt="W3C Validator Testing in early development with two errors identified" style="max-width: 800px; width: 100%;">
-      </details>
-- This was later used once the build stage of development had concluded. The 
+- This was later used once the build stage of development had concluded. There were errors raised from the use of the Bootsrap accordion on the FAQ page. The validator error happens because a plain "div" is not allowed to use aria-labelledby unless it has a proper ARIA role. The fix is to add role="region" to the collapsible panel so it becomes a valid labelled section for assistive technologies. See commit ref 6cdcc43. 
+
+-----
+<details><summary><i>W3C Validator Testing in Early Development</i></summary>
+<img src="assets/docs/w3c-validator-early-development.png" alt="W3C Validator Testing in early development with two errors identified" style="max-width: 800px; width: 100%;">
+</details>
 -----
 <details><summary><i>Home / Search Page HTML Validator</i></summary>
 <img src="assets/docs/home-page-html-validator.png" alt="Home / search page html validation" style="max-width: 400px; width: 100%;">
@@ -66,12 +68,10 @@ Explaining what automated testing is and how it's been used.
 </details>
 -----
 <details><summary><i>404 Page HTML Validator</i></summary>
-<img src="#" alt="404 page html validation" style="max-width: 400px; width: 100%;">
+<img src="assets/docs/404-page-html-validator.png" alt="404 page html validation" style="max-width: 400px; width: 100%;">
 </details>
 -----
 
-- There were errors raised from the use of the Bootsrap accordion on the FAQ page. The validator error happens because a plain <div> is not allowed to use aria-labelledby unless it has a proper ARIA role. The fix is to add role="region" to the collapsible panel so it becomes a valid labelled section for assistive technologies. See commit ref 6cdcc43.
- 
 
 ### CSS Validator
 [Jigsaw CSS Validator](https://jigsaw.w3.org/css-validator/) was used to spot syntax mistakes and conflicting rules before they cause unpredictable layouts or styling glitches. There were no issues to fix within my style.css file.

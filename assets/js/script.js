@@ -15,9 +15,9 @@ $(document).ready(function () {
 
     // Featured festivals for Discover page - This is manually curated list
     const FEATURED_FESTIVALS = [
-    "41408774", // Boomtown Festival
+    "41295732", // Wilderness Festival
+    "41636501", // Shambala Festival
     "41496625", // TRNSMT Festival
-    "41414028", // Reading Festival
     "41490996"  // All Points East
     ];
 
