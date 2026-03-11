@@ -74,7 +74,10 @@ Explaining what automated testing is and how it's been used.
 
 
 ### CSS Validator
-[Jigsaw CSS Validator](https://jigsaw.w3.org/css-validator/) was used to spot syntax mistakes and conflicting rules before they cause unpredictable layouts or styling glitches. There were no issues to fix within my style.css file.
+- [W3C CSS Validator](https://jigsaw.w3.org/css-validator/) was used to spot syntax mistakes and conflicting rules before they cause unpredictable layouts or styling glitches. There were no issues to fix within my style.css file.
+<details><summary><i>W3C CSS Validator</i></summary>
+<img src="assets/docs/css-validator.png" alt="Css validation" style="max-width: 600px; width: 100%;">
+</details>
 
 ### JSHint / JavaScript Validator
 Completing JS testing and outlining the results.
