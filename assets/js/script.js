@@ -198,7 +198,6 @@ $(document).ready(function () {
             }
 
             const $lineup = $("<p>") // Adding lineup to card container
-                .addClass("event-lineup")
                 .html(lineupHTML); // The only way to allow css to work is to make the output html rather than text
 
             // Adding tickets button to card containers (with fallback directing user to Skiddle)
@@ -298,7 +297,7 @@ $(document).ready(function () {
                                             <strong>Info:</strong> ${description}
                                         </p>
 
-                                        <p class="event-lineup">
+                                        <p>
                                             ${lineupHTML}
                                         </p>
 
@@ -391,7 +390,6 @@ $(document).ready(function () {
                 }
 
                 const $lineup = $("<p>")
-                    .addClass("event-lineup")
                     .html(lineupHTML);
 
                 // Tickets button
@@ -497,7 +495,6 @@ $(document).ready(function () {
                 }
 
                 const $lineup = $("<p>")
-                    .addClass("event-lineup")
                     .html(lineupHTML);
 
                 const ticketURL = event.tickets || event.link;
