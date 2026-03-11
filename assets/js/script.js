@@ -2,9 +2,9 @@
 // Skiddle API Code
 // -------------------------------------
 
-// jQuery is the code language of choice for this project
+// jQuery is the code language of choice for FestFind
 
-// All wrapped in (document).ready(function) to ensure this code is run after the html document is full loadeed.
+// Run after the DOM is fully loaded.
 $(document).ready(function () {
 
     // API key stored as const as will need throughout code
@@ -13,7 +13,7 @@ $(document).ready(function () {
     // Global constants
     const ARTIST_CAP = 10; // To allow for cap on artists shown in lineup on searches
 
-    // Featured festivals for Discover page - This is manually curated list
+    // Featured festivals for Discover page - manually curated list
     const FEATURED_FESTIVALS = [
     "41295732", // Wilderness Festival
     "41636501", // Shambala Festival
@@ -21,7 +21,7 @@ $(document).ready(function () {
     "41490996"  // All Points East
     ];
 
-    // Lineup announcement for Discover page - This is manually curated similar to FEATURED_FESTIVALS
+    // Lineup announcement for Discover page - manually curated similar to FEATURED_FESTIVALS
     const LINEUP_ANNOUNCEMENTS = [
         {
             id: "41398417", // Green Man Festival
@@ -79,16 +79,15 @@ $(document).ready(function () {
 
 
     // API Parameters Request
-
     const today = new Date().toISOString().split("T")[0]; // This was the best way to identify today's date for the minDate API parameter 
 
     const params = {
     api_key: SKIDDLE_API_KEY,
     keyword: query,
-    eventcode: "FEST", // This ensures that only festivals are called to the website as Skiddle API also has other categories of events
+    eventcode: "FEST", // Ensures that only festivals are called to the website as Skiddle API also has other categories of events
     minDate: today,
     description: "1",
-    limit: "100", // This limit is stated on the Skiddle API GitHub documentation 
+    limit: "100", // Limit is stated on the Skiddle API GitHub documentation 
     order: "date"
     };
     
@@ -99,7 +98,6 @@ $(document).ready(function () {
     // Search bar code utilising Skiddle API 
     // -------------------------------------
     
-    // API call and filter by artist
     $.getJSON(url, function (data) { // Request to the Skiddle API 
         $statusDiv.text("");
 
@@ -115,19 +113,19 @@ $(document).ready(function () {
         let filtered; // Filtering the API results to find festivals based on the search mode
 
         switch (mode) {
-            case "artist": // Search mode by artist
+            case "artist": 
                 filtered = data.results.filter(event =>
                     event.artists &&
                     event.artists.some(a => a.name.toLowerCase() === lower)
                 );
                 break;
-            case "festival": // Search mode by festival
+            case "festival":
                 filtered = data.results.filter(event =>
                     event.eventname.toLowerCase().includes(lower)
                 );
                 break;
 
-            case "city": // Search mode by city
+            case "city": 
                 filtered = data.results.filter(event =>
                     event.venue?.town?.toLowerCase().includes(lower)
                 );
@@ -148,19 +146,16 @@ $(document).ready(function () {
         }
 
         filtered.forEach(event => {
-            const $card = $("<div>").addClass("event-card"); // Creating an card container for each festival 
-            // Adding the festival image to card container 
+            const $card = $("<div>").addClass("event-card"); 
+            
             const $img = $("<img>") 
                 .attr("src", event.largeimageurl)
                 .attr("alt", event.eventname);
 
-            // Creating a container for the text 
             const $info = $("<div>").addClass("event-info"); 
 
-            // Adding festival name to card container 
             const $title = $("<h2>").text(event.eventname); 
 
-            // Adding metadata to card container 
             const dateObj = new Date(event.date);
             const formattedDate = dateObj.toLocaleDateString("en-GB");  // Ensures the date is in the UK standard format
 
@@ -185,8 +180,8 @@ $(document).ready(function () {
                     : a.name;
             });
 
-            const visibleArtists = processedArtists.slice(0, ARTIST_CAP).join(", ");  // The purpose of this is to call artist cap to only show 10 artists on lineup
-            const hiddenArtists = processedArtists.slice(ARTIST_CAP).join(", ");  // Split into visible + hidden sections
+            const visibleArtists = processedArtists.slice(0, ARTIST_CAP).join(", ");  // Limit visible artists to ARTIST_CAP
+            const hiddenArtists = processedArtists.slice(ARTIST_CAP).join(", ");  // Remaining artists go into the hidden section
 
             let lineupHTML = `<strong>Lineup:</strong> ${visibleArtists}`;
 
@@ -194,13 +189,12 @@ $(document).ready(function () {
                 lineupHTML += `
                     <span style="display:none;">, ${hiddenArtists}</span>
                     <a class="read-more-link">Read more</a>
-                `; // Read more button links to read-more-btn class and runs toggle function included in first section of script.js 
+                `; // Adds the Read More toggle
             }
 
-            const $lineup = $("<p>") // Adding lineup to card container
+            const $lineup = $("<p>") 
                 .html(lineupHTML); // The only way to allow css to work is to make the output html rather than text
 
-            // Adding tickets button to card containers (with fallback directing user to Skiddle)
             const ticketURL = event.tickets || event.link;
 
             const $ticketsLink = $("<button>")
@@ -214,7 +208,7 @@ $(document).ready(function () {
             $info.append($title, $meta, $desc, $lineup); 
             $card.append($img, $info);
             $info.append($ticketsLink);
-            $resultsDiv.append($card); // This adds the card to the results section of index.html 
+            $resultsDiv.append($card); // Adds the card to the results section of index.html 
 
             // Adding fallback to festivals who have no lineup information on Skiddle API
             if (artists.length === 0) {
@@ -263,7 +257,6 @@ $(document).ready(function () {
 
                     let lineupHTML = `<strong>Headliners:</strong> ${visibleArtists}`; // Only want to use the first 10 artists on the lineup for the carousel due to formatting
 
-                    // Ticket button
                     const ticketURL = event.tickets || event.link;
                     const ticketButton = `
                         <button class="event-button" onclick="window.open('${ticketURL}', '_blank')">
@@ -317,7 +310,7 @@ $(document).ready(function () {
 
     // Second Section - Load event into Lineup Announcements section
     function loadLineupAnnouncements() {
-        // This section calls Skiddle event number and manually entered date added at the top of script.js
+        // Uses the manually defined accouncement ID and date
         const announcement = LINEUP_ANNOUNCEMENTS[0]; 
         const eventID = announcement.id; 
         const announcedDate = announcement.announced; 
@@ -336,18 +329,14 @@ $(document).ready(function () {
                 // Build card exactly like your search results
                 const $card = $("<div>").addClass("event-card");
 
-                // Image
                 const $img = $("<img>")
                     .attr("src", event.largeimageurl || event.imageurl)
                     .attr("alt", event.eventname);
 
-                // Info container
                 const $info = $("<div>").addClass("event-info");
 
-                // Title
                 const $title = $("<h2>").text(event.eventname);
 
-                // Announcement date
                 let $announced = null;
                 if (announcedDate) {
                     const formattedAnnouncement = new Date(announcedDate).toLocaleDateString("en-GB");
@@ -356,11 +345,9 @@ $(document).ready(function () {
                         .html(`Announced: ${formattedAnnouncement}`);
                 }
 
-                // Date formatting
                 const dateObj = new Date(event.date);
                 const formattedDate = dateObj.toLocaleDateString("en-GB");
 
-                // Metadata
                 const $meta = $("<div>")
                     .addClass("event-meta")
                     .html(`
@@ -368,12 +355,10 @@ $(document).ready(function () {
                         <span><i class="fa-solid fa-calendar-day"></i> ${formattedDate}</span>
                     `);
 
-                // Description
                 const $desc = $("<p>")
                     .addClass("event-description")
                     .html(`<strong>Info:</strong> ${event.description || "No description available."}`);
 
-                // Lineup
                 const artists = event.artists || [];
                 const processedArtists = artists.map(a => a.name);
 
@@ -392,7 +377,6 @@ $(document).ready(function () {
                 const $lineup = $("<p>")
                     .html(lineupHTML);
 
-                // Tickets button
                 const ticketURL = event.tickets || event.link;
 
                 const $ticketsLink = $("<button>")
@@ -400,14 +384,11 @@ $(document).ready(function () {
                     .text(event.tickets ? "Buy Tickets" : "Check Tickets on Skiddle")
                     .on("click", () => window.open(ticketURL, "_blank"));
 
-                // Assemble card
                 $info.append($announced, $title, $meta, $desc, $lineup, $ticketsLink);
                 $card.append($img, $info);
 
-                // Insert into announcements section
                 $("#lineup-announcements").empty().append($card);
 
-                // Fallback for no lineup
                 if (artists.length === 0) {
                     $lineup.html("<strong>Lineup:</strong> <i>Lineup coming soon.</i>");
                 }
@@ -428,12 +409,12 @@ $(document).ready(function () {
             minDate: today,
             limit: "100",
             description: "1",
-            order: "trending" // This filter used to make sure larger random festivals are selected
+            order: "trending" // 'Trending' filter used to make sure larger random festivals are selected
         };
 
         const url = "https://www.skiddle.com/api/v1/events/search/?" + $.param(params);
 
-        // This code replicates the card containers created for the search function
+        // Reuses the same card structure as search results
         $.getJSON(url)
             .done(data => {
                 if (!data.results || data.results.length === 0) {

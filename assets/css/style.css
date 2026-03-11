@@ -34,7 +34,7 @@ body {
 
 #navbar .nav-link {
     color: var(--secondary-color);
-    margin: 0 1rem; /* adjusting spacing */
+    margin: 0 1rem;
     border-bottom: 2px solid transparent;
     transition: all 200ms ease;
 }
@@ -185,12 +185,12 @@ body {
     background-repeat: no-repeat;
     background-position: right 1rem center;
     background-size: 24px;
-    padding-right: 2.5rem; /* space for arrow */
+    padding-right: 2.5rem;
 
 }
 
 #mode-toggle option { 
-    background-color: var(--primary-color); /* This removes the white background on the options when using mode toggle*/
+    background-color: var(--primary-color); /* This removes the white background on the options when using mode toggle */
     color: var(--secondary-color);
 }
 
@@ -251,22 +251,22 @@ body {
 
 /* Festival name on card container */
 .event-info h2 {
-    margin-bottom: 0.75rem; /* space under the title */
+    margin-bottom: 0.75rem; 
     font-size: 1.5rem;
 }
 
 /* Festival location and date on card containers */
 .event-meta {
-    margin-bottom: 0.75rem; /* space under location/date */
+    margin-bottom: 0.75rem; 
 }
 
 .event-meta span:first-child {
-    margin-right: 1rem; /* create space between location/date */ 
+    margin-right: 1rem;
 }
 
 /* Festival info on card container */
 .event-description {
-    margin-bottom: 0.75rem; /* space under the info section */
+    margin-bottom: 0.75rem; 
 }
 
 /* Tickets / Skiddle button on card container*/
