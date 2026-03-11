@@ -47,7 +47,7 @@ $(document).ready(function () {
     // 'Read More' Click Handler (found within card containers after searching) - Needs to go before search bar otherwise ther 'read more' toggle will cancel itself out on a second search
     $(document).on("click", ".read-more-link", function () {
         const $btn = $(this);
-        const $hidden = $btn.prev(".more-artists");
+        const $hidden = $btn.prev();
 
         if ($hidden.is(":visible")) {
             $hidden.slideUp(500);
@@ -192,7 +192,7 @@ $(document).ready(function () {
 
             if (hiddenArtists.length > 0) {
                 lineupHTML += `
-                    <span class="more-artists" style="display:none;">, ${hiddenArtists}</span>
+                    <span style="display:none;">, ${hiddenArtists}</span>
                     <a class="read-more-link">Read more</a>
                 `; // Read more button links to read-more-btn class and runs toggle function included in first section of script.js 
             }
@@ -384,7 +384,7 @@ $(document).ready(function () {
 
                 if (hiddenArtists.length > 0) {
                     lineupHTML += `
-                        <span class="more-artists" style="display:none;">, ${hiddenArtists}</span>
+                        <span style="display:none;">, ${hiddenArtists}</span>
                         <a class="read-more-link">Read more</a>
                     `;
                 }
@@ -489,7 +489,7 @@ $(document).ready(function () {
 
                 if (hiddenArtists.length > 0) {
                     lineupHTML += `
-                        <span class="more-artists" style="display:none;">, ${hiddenArtists}</span>
+                        <span style="display:none;">, ${hiddenArtists}</span>
                         <a class="read-more-link">Read more</a>
                     `;
                 }
