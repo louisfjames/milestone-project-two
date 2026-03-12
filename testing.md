@@ -59,39 +59,35 @@ Explaining what automated testing is and how it's been used.
 - This was first used after the development of the first page (home / search page) to ensure errors were not replicated in other pages.
 - This was later used once the build stage of development had concluded. There were errors raised from the use of the Bootsrap accordion on the FAQ page. The validator error happens because a plain "div" is not allowed to use aria-labelledby unless it has a proper ARIA role. The fix is to add role="region" to the collapsible panel so it becomes a valid labelled section for assistive technologies. See commit ref 6cdcc43. 
 
------
-<details><summary><i>W3C Validator Testing in Early Development</i></summary>
-<img src="assets/docs/w3c-validator-early-development.png" alt="W3C Validator Testing in early development with two errors identified" style="max-width: 800px; width: 100%;">
-</details>
------
-<details><summary><i>Home / Search Page HTML Validator</i></summary>
-<img src="assets/docs/home-page-html-validator.png" alt="Home / search page html validation" style="max-width: 400px; width: 100%;">
-</details>
------
-<details><summary><i>Discover Page HTML Validator</i></summary>
-<img src="assets/docs/discover-page-html-validator.png" alt="Discover page html validation" style="max-width: 400px; width: 100%;">
-</details>
------
-<details><summary><i>FAQ Page HTML Validator</i></summary>
-<img src="assets/docs/faq-page-html-validator.png" alt="FAQ page html validation" style="max-width: 400px; width: 100%;">
-</details>
------
-<details><summary><i>404 Page HTML Validator</i></summary>
-<img src="assets/docs/404-page-html-validator.png" alt="404 page html validation" style="max-width: 400px; width: 100%;">
-</details>
------
+- **W3C Validator Testing in Early Development**
+  - <img src="assets/docs/w3c-validator-early-development.png" alt="W3C Validator Testing in early development with two errors identified" style="max-width: 800px; width: 100%;">
+
+- **Home / Search Page HTML Validator**
+  - <img src="assets/docs/home-page-html-validator.png" alt="Home / search page html validation" style="max-width: 500px; width: 100%;">
+
+
+- **Discover Page HTML Validator**
+  - <img src="assets/docs/discover-page-html-validator.png" alt="Discover page html validation" style="max-width: 500px; width: 100%;">
+
+- **FAQ Page HTML Validator**
+  - <img src="assets/docs/faq-page-html-validator.png" alt="FAQ page html validation" style="max-width: 500px; width: 100%;">
+
+- **404 Page HTML Validator**
+  - <img src="assets/docs/404-page-html-validator.png" alt="404 page html validation" style="max-width: 500px; width: 100%;">
 
 
 ### CSS Validator
 - [W3C CSS Validator](https://jigsaw.w3.org/css-validator/) was used to spot syntax mistakes and conflicting rules before they cause unpredictable layouts or styling glitches. There were no issues to fix within my style.css file.
-<details><summary><i>W3C CSS Validator</i></summary>
-<img src="assets/docs/css-validator.png" alt="Css validation" style="max-width: 600px; width: 100%;">
-</details>
+  - <img src="assets/docs/css-validator.png" alt="Css validation" style="max-width: 600px; width: 100%;">
+
 
 ### JavaScript Validator
-Completing JS testing and outlining the results.
+A JavaScript validator was used to check the code and make sure it followed good standards. [JSHint](https://jshint.com/) is a tool that scans JavaScript and points out errors, unused code, and common issues. It also highlights parts of the script that may not work as expected in some browsers. JSHint was set to use esversion 11 because the project uses jQuery and this version supports the features needed for it. This validator highlighted the following two small warnings:
+- Misleading line break before '?'; readers may interpret this as an expression boundary (line 182).
+- Missing semicolon (line 208).
+These two warnings were addressed - see commit reference XXX.
 
-Need to use: /* jshint esversion: 11 */ for JSHint
+INSERT HERE
 
 
 ### Google Chrome Lighthouse

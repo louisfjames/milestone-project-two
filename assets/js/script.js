@@ -175,8 +175,7 @@ $(document).ready(function () {
             const artists = event.artists || [];
 
             const processedArtists = artists.map(a => {
-                return a.name.toLowerCase() === lower 
-                    ? `<span class="highlight-artist">${a.name}</span>` // Highlighting the searched artist
+                return a.name.toLowerCase() === lower ? `<span class="highlight-artist">${a.name}</span>` // Highlighting the searched artist
                     : a.name;
             });
 
@@ -202,7 +201,7 @@ $(document).ready(function () {
                 .text(event.tickets ? "Buy Tickets" : "Check Tickets on Skiddle")
                 .on("click", () => {
                     window.open(ticketURL, "_blank");
-                })
+                });
 
             // Assembling the card container
             $info.append($title, $meta, $desc, $lineup); 
