@@ -15,9 +15,7 @@ This document summarises all testing completed throughout development.
 
 
 ### Behaviour Driven Development / Manual Testing
-Behaviour Driven Development was used to guide the testing process. This method focuses on how a user expects a feature to behave and the aim is to check that the site behaves in a clear and predictable way. It also helps keep the focus on user needs rather than only on technical checks.
-
-Manual testing supported this approach. Each feature was tested by hand to confirm that it worked as expected. This type of testing is useful because it shows how the site performs in real use and it helps find issues that automated tools may not detect.
+Behaviour driven development was used to guide the testing process. This method focuses on how a user expects a feature to behave and the aim is to check that the site behaves in a clear and predictable way. It also helps keep the focus on user needs rather than only on technical checks. These principles are met in the manual testing because each test follows a simple action and a clear expected result, and each one checks behaviour that matters to the user such as navigation, searching, loading data, and viewing festival details. Each feature was tested by hand to confirm that it worked as expected. This type of testing is useful because it shows how the site performs in real use and it helps find issues that automated tools may not detect. 
 
 #### Navigation and Layout
 
@@ -48,7 +46,6 @@ Manual testing supported this approach. Each feature was tested by hand to confi
 | Feature | Expected Outcome | Testing Performed | Result | Pass/Fail |
 | --- | --- | --- | --- | --- |
 | Festival card content | Shows image, name, date | Checked cards | All fields display correctly | **✔ PASS** |
-| External event links | Cards open Skiddle event pages | Clicked cards | Correct event pages open | **✔ PASS** |
 | Responsive card layout | Cards adapt to screen size | Tested on multiple devices | Layout stays stable | **✔ PASS** |
 | Hover effects | Hover changes card state | Hovered on desktop | Hover effect works as expected, but noticed cursor issue on 'Read More' link | **🐛 BUG IDENTIFIED** |
 
@@ -90,9 +87,9 @@ See [bug fixes table](#bug-fixes) where the identified issues were logged.
 
 
 ### Automated Testing
-Explaining what automated testing is and how it's been used.
+Automated testing checks code behaviour by running tests through a tool or script rather than by hand. Its key principles are repeatability, consistency, and early detection of errors. Automated tests run the same steps every time, which removes human error and makes it easier to spot issues when new features are added. They are useful for checking functions, input handling, and any part of the code that should always behave in the same way. 
 
-What is Jest?
+At the time of submission automated testing had not been used, but it could be added through Jest. Jest is a JavaScript testing framework that can run small, repeatable tests on functions and components to confirm that they behave as expected. It could be used to test that the search function returns the correct results for valid input, that empty or invalid input is handled safely, and that API responses are processed without causing errors.
 
 ### Acceptance Criteria Testing
 This table outlines the key user stories and acceptance criteria completed during development. This demonstrates how the website meets the expectations of its target audience and ensures a satisfying user experience.
