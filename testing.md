@@ -9,7 +9,7 @@ This document summarises all testing completed throughout development.
 3. [SOFTWARE TESTING / AUTOMATED TESTING](#software-testing--automated-testing)
 4. [HTML VALIDATOR](#html-validator)
 5. [CSS VALIDATOR](#css-validator)
-6. [JEST / JAVASCRIPT VALIDATOR](#jest--javascript-validator)
+6. [JAVASCRIPT VALIDATOR](#javascript-validator)
 7. [GOOGLE CHROME LIGHTHOUSE](#google-chrome-lighthouse)
 8. [BUG FIXES](#bug-fixes)
 
@@ -32,11 +32,20 @@ This table outlines the key user stories and acceptance criteria completed durin
 | 4: Helpful Error Recovery Experience (Must-Have) | Using browser back/forward does not leave the site in a broken state. | **✔ PASS** |
 | 5: FAQ Page (Should-Have) | An accessible accordion presents FAQ items and supports keyboard navigation and ARIA roles. | **✔ PASS** |
 | 5: FAQ Page (Should-Have) | The FAQ contains clear, site‑specific explanations about how the website works and how to use key features. | **✔ PASS** |
-| 6: Festival News Feed (Could-Have) | A Festival News section appears on the Discover page and displays recent festival‑related articles with title, source, date, and “Read More” link. | **⌛ NOT YET ADDRESSED** |
-| 6: Festival News Feed (Could-Have) | Articles are automatically filtered to include only festival or lineup‑related content and update at a set interval. | **⌛ NOT YET ADDRESSED** |
-| 6: Festival News Feed (Could-Have) | If the feed cannot load new data, a fallback message is shown and previously cached articles remain visible. | **⌛ NOT YET ADDRESSED** |
+| 6: Festival News Feed (Could-Have) | A Festival News section appears on the Discover page and displays recent festival‑related articles with title, source, date, and “Read More” link. | **◐ PARTIALLY MET** |
+| 6: Festival News Feed (Could-Have) | Articles are automatically filtered to include only festival or lineup‑related content and update at a set interval. | **◐ PARTIALLY MET**|
+| 6: Festival News Feed (Could-Have) | If the feed cannot load new data, a fallback message is shown and previously cached articles remain visible. | **◐ PARTIALLY MET** |
 
-ADD WORDING TO EXPLAIN THIS.
+#### User Story 6 Assessment
+The approach to this user story changed during the project as other features were built and the overall structure of the site became clearer. This user story was always marked as a could‑have, so it sat outside the core goals of the project. A second API was not added which meant not all acceptance criteria for User Story 6 were fully met. Bringing in another data source would have increased the complexity of the build and made the project harder to maintain without offering a clear benefit to the user. The Skiddle API already provided strong festival data so a simple news style section was created from this instead. Key lineup updates were selected and each update includes a clear announcement date so users can see recent changes at a glance. This means the user story is partly achieved because the Discover page still presents fresh festival information even though it is not a full live news feed with automated articles.
+
+An assessment of each acceptence criteria associated with User Story 6 has been included below:
+- **A Festival News section appears on the Discover page and displays recent festival related articles with a title, source, date, and “Read More” link.**
+  - The Discover page includes a lineup announcement section that shows recent festival updates taken from Skiddle data. Each update has a clear title and a date so users can see when the news was announced. This gives a simple way to view fresh festival information in one place.
+- **Articles are automatically filtered to include only festival or lineup related content and update at a set interval.**
+  - The site does not use automated filtering or timed updates. Instead, the lineup announcements are selected to keep the content focused on festival news. This keeps the section relevant and easy to understand without extra data sources.
+- **If the feed cannot load new data, a fallback message is shown and previously cached articles remain visible.**
+  - The site does not use a live feed so a fallback message is not needed. The lineup announcements are static and always visible. This means the section never appears empty or broken and users always see clear and reliable information.
 
 
 ### Behaviour Driven Development / Manual Testing
@@ -79,15 +88,10 @@ Explaining what automated testing is and how it's been used.
 <img src="assets/docs/css-validator.png" alt="Css validation" style="max-width: 600px; width: 100%;">
 </details>
 
-### JSHint / JavaScript Validator
+### JavaScript Validator
 Completing JS testing and outlining the results.
 
 Need to use: /* jshint esversion: 11 */ for JSHint
-
-
-Also, all javascript code has been tested with: Google Developer Tools Console Tab.
-- By displaying JavaScript errors and warnings for debugging.
-- Executing JavaScript code from the console .
 
 
 ### Google Chrome Lighthouse

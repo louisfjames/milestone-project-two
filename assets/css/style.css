@@ -122,7 +122,7 @@ body {
 }
 
 .social-media-links a:hover {
-    color: var(--fifth-highlight-color);
+    color: var(--secondary-highlight-color);
 }
 
 
