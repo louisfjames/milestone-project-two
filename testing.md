@@ -1,18 +1,98 @@
-# Milestone Project Two - Testing Documentation
+# Milestone Project Two - Testing Documentation 🧪
 
 This document summarises all testing completed throughout development.
 
 ## CONTENTS
 
-1. [ACCEPTANCE CRITERIA TESTING](#acceptance-criteria-testing)
-2. [BEHAVIOUR DRIVEN DEVELOPMENT / MANUAL TESTING](#behaviour-driven-development--manual-testing)
-3. [SOFTWARE TESTING / AUTOMATED TESTING](#software-testing--automated-testing)
+1. [BEHAVIOUR DRIVEN DEVELOPMENT / MANUAL TESTING](#behaviour-driven-development--manual-testing)
+2. [AUTOMATED TESTING](#automated-testing)
+3. [ACCEPTANCE CRITERIA TESTING](#acceptance-criteria-testing)
 4. [HTML VALIDATOR](#html-validator)
 5. [CSS VALIDATOR](#css-validator)
 6. [JAVASCRIPT VALIDATOR](#javascript-validator)
 7. [GOOGLE CHROME LIGHTHOUSE](#google-chrome-lighthouse)
 8. [BUG FIXES](#bug-fixes)
 
+
+### Behaviour Driven Development / Manual Testing
+Behaviour Driven Development was used to guide the testing process. This method focuses on how a user expects a feature to behave and the aim is to check that the site behaves in a clear and predictable way. It also helps keep the focus on user needs rather than only on technical checks.
+
+Manual testing supported this approach. Each feature was tested by hand to confirm that it worked as expected. This type of testing is useful because it shows how the site performs in real use and it helps find issues that automated tools may not detect.
+
+#### Navigation and Layout
+
+| Feature | Expected Outcome | Testing Performed | Result | Pass/Fail |
+| --- | --- | --- | --- | --- |
+| Header links | Each link loads the correct page | Clicked each link | All links load the correct pages | **✔ PASS** |
+| Logo link | Returns user to Home page | Clicked logo | Home page loads | **✔ PASS** |
+| Desktop navigation | Navigation works on large screens | Tested on desktop | All links work and layout stays stable | **✔ PASS** |
+| Tablet navigation | Navigation works on medium screens | Tested on tablet size | Layout adapts and links work | **✔ PASS** |
+| Mobile menu | Menu opens and closes | Tapped menu icon | Menu opens and closes in a clear way | **✔ PASS** |
+| Footer links | Footer links open correct pages | Clicked each link | All links open correct pages in new tabs where needed | **✔ PASS** |
+
+#### Search Bar and Search Results
+
+| Feature | Expected Outcome | Testing Performed | Result | Pass/Fail |
+| --- | --- | --- | --- | --- |
+| Valid search input | Shows festival results | Entered valid terms | Results appear in correct format | **✔ PASS** |
+| Empty search input | Shows clear message | Submitted empty search | Clear message shown | **✔ PASS** |
+| Long search input | Layout stays stable | Entered long text | Layout stays stable and no errors | **✔ PASS** |
+| Special characters | Search handles unusual input | Entered special characters | No errors and message shown if no results | **✔ PASS** |
+| Mixed case input | Returns correct results | Entered mixed case terms | Correct results shown | **✔ PASS** |
+| Search result content | Shows name, date, location, image | Checked result cards | All fields display correctly, but bug identified where API pulls through large posters that impact formatting | **🐛 BUG IDENTIFIED** |
+| External links | Cards link to Skiddle pages | Clicked each card | Correct Skiddle pages open for 'Check Tickets on Skiddle' button, but not for 'Buy Tickets' button | **🐛 BUG IDENTIFIED** |
+| Updated results | New search updates results | Performed repeated searches | Results update each time | **✔ PASS** |
+| No match message | Shows message when no results | Searched for unknown term | Clear no results message shown | **✔ PASS** |
+
+#### Festival Cards and Event Details
+| Feature | Expected Outcome | Testing Performed | Result | Pass/Fail |
+| --- | --- | --- | --- | --- |
+| Festival card content | Shows image, name, date | Checked cards | All fields display correctly | **✔ PASS** |
+| External event links | Cards open Skiddle event pages | Clicked cards | Correct event pages open | **✔ PASS** |
+| Responsive card layout | Cards adapt to screen size | Tested on multiple devices | Layout stays stable | **✔ PASS** |
+| Hover effects | Hover changes card state | Hovered on desktop | Hover effect works as expected, but noticed cursor issue on 'Read More' link | **🐛 BUG IDENTIFIED** |
+
+#### Discover Page
+| Feature | Expected Outcome | Testing Performed | Result | Pass/Fail |
+| --- | --- | --- | --- | --- |
+| Featured festivals | API data loads on page | Loaded Discover page | Featured festivals appear | **✔ PASS** |
+| Lineup announcements | Shows title and date | Checked announcement cards | All cards show correct info | **✔ PASS** |
+| Announcement links | Cards open correct pages | Clicked each card | Correct external pages open | **✔ PASS** |
+| Responsive layout | Cards display well on all screens | Tested on multiple sizes | Layout stays clean and readable | **✔ PASS** |
+| Loading state | Shows loading message | Loaded page on slow connection | Loading state appears | **✔ PASS** |
+| Error state | Shows fallback message | Simulated API error | Clear fallback message shown | **✔ PASS** |
+
+#### API Behaviour
+| Feature | Expected Outcome | Testing Performed | Result | Pass/Fail |
+| --- | --- | --- | --- | --- |
+| Initial API load | Data loads on first visit | Loaded pages | Data loads correctly | **✔ PASS** |
+| API error handling | Shows fallback message | Simulated API error | Clear fallback message shown | **✔ PASS** |
+| Data refresh | Data updates on reload | Refreshed pages | Updated data appears | **✔ PASS** |
+| Data format | Data displays in correct layout | Checked all API sections | All data displays correctly | **✔ PASS** |
+
+#### Error Handling
+| Feature | Expected Outcome | Testing Performed | Result | Pass/Fail |
+| --- | --- | --- | --- | --- |
+| 404 page | 404 page appears when incorrect url is entered | Entered incorrect url | 404 page appears | **✔ PASS** |
+| Broken link handling | User sees a clear error message | Clicked a broken or edited link | Error page loads with clear message | **✔ PASS** |
+| API failure message | Fallback message appears when API fails | Simulated API error | Fallback message appears on page | **✔ PASS** |
+| Missing image handling | Default image appears when API image is missing | Removed image url in test | Default image displays correctly | **✔ PASS** |
+
+#### Performance and Responsiveness
+| Feature | Expected Outcome | Testing Performed | Result | Pass/Fail |
+| --- | --- | --- | --- | --- |
+| Page load speed | Pages load in reasonable time | Loaded each page | All pages load quickly | **✔ PASS** |
+| Mobile layout | Layout adapts to small screens | Tested on mobile | Layout clean with no overlap | **✔ PASS** |
+| Tablet layout | Layout adapts to medium screens | Tested on tablet | Layout stable and readable | **✔ PASS** |
+| No horizontal scroll | No sideways scrolling on mobile | Tested on small screens | No horizontal scroll present | **✔ PASS** |
+
+See [bug fixes table](#bug-fixes) where the identified issues were logged.
+
+
+### Automated Testing
+Explaining what automated testing is and how it's been used.
+
+What is Jest?
 
 ### Acceptance Criteria Testing
 This table outlines the key user stories and acceptance criteria completed during development. This demonstrates how the website meets the expectations of its target audience and ensures a satisfying user experience.
@@ -48,11 +128,6 @@ An assessment of each acceptence criteria associated with User Story 6 has been 
   - The site does not use a live feed so a fallback message is not needed. The lineup announcements are static and always visible. This means the section never appears empty or broken and users always see clear and reliable information.
 
 
-### Behaviour Driven Development / Manual Testing
-Explaining what manual testing is and how it's been used.
-
-### Software Testing / Automated Testing
-Explaining what automated testing is and how it's been used.
 
 ### HTML Validator 
 - [W3C Validator](https://validator.w3.org/) was used to ensure that web standards are being met and there are no structural issues.
@@ -77,38 +152,35 @@ Explaining what automated testing is and how it's been used.
 
 
 ### CSS Validator
-- [W3C CSS Validator](https://jigsaw.w3.org/css-validator/) was used to spot syntax mistakes and conflicting rules before they cause unpredictable layouts or styling glitches. There were no issues to fix within my style.css file.
-  - <img src="assets/docs/css-validator.png" alt="Css validation" style="max-width: 600px; width: 100%;">
+[W3C CSS Validator](https://jigsaw.w3.org/css-validator/) was used to spot syntax mistakes and conflicting rules before they cause unpredictable layouts or styling glitches. There were no issues to fix within my style.css file.
+
+<img src="assets/docs/css-validator.png" alt="Css validation" style="max-width: 600px; width: 100%;">
 
 
 ### JavaScript Validator
 A JavaScript validator was used to check the code and make sure it followed good standards. [JSHint](https://jshint.com/) is a tool that scans JavaScript and points out errors, unused code, and common issues. It also highlights parts of the script that may not work as expected in some browsers. JSHint was set to use esversion 11 because the project uses jQuery and this version supports the features needed for it. This validator highlighted the following two small warnings:
 - Misleading line break before '?'; readers may interpret this as an expression boundary (line 182).
 - Missing semicolon (line 208).
-These two warnings were addressed - see commit reference XXX.
 
-INSERT HERE
+These two warnings were addressed - see commit reference 2d04777.
+
+<img src="assets/docs/jshint-validator.png" alt="JSHint testing" style="max-width: 700px; width: 100%;">
 
 
 ### Google Chrome Lighthouse
 Google Lighthouse is a helpful auditing tool that checks performance, accessibility and best practice issues on a website. It is useful because it gives clear guidance on what needs improving and shows how changes affect the overall quality of the site. The scores receieved for each page have been included below.
 
-<details><summary><i>Home / Search Page Lighthouse Score</i></summary>
-  <img src="assets/docs/home-page-lighthouse.png" alt="Home / search page lighthouse audit score" style="max-width: 300px; width: 100%;">
-</details>
------
-<details><summary><i>Discover Page Lighthouse Score</i></summary>
-  <img src="assets/docs/discover-page-lighthouse.png" alt="Discover page lighthouse audit score" style="max-width: 300px; width: 100%;">
-</details>
------
-<details><summary><i>FAQ Page Lighthouse Score</i></summary>
-  <img src="assets/docs/faq-page-lighthouse.png" alt=" FAQ page lighthouse audit score" style="max-width: 300px; width: 100%;">
-</details>
------
-<details><summary><i>404 Page Lighthouse Score</i></summary>
-  <img src="assets/docs/404-page-lighthouse.png" alt="404 page lighthouse audit score" style="max-width: 300px; width: 100%;">
-</details>
------
+- Home / Search Page Lighthouse Score
+  - <img src="assets/docs/home-page-lighthouse.png" alt="Home / search page lighthouse audit score" style="max-width: 500px; width: 100%;">
+
+- Discover Page Lighthouse Score
+  - <img src="assets/docs/discover-page-lighthouse.png" alt="Discover page lighthouse audit score" style="max-width: 500px; width: 100%;">
+
+- FAQ Page Lighthouse Score
+  - <img src="assets/docs/faq-page-lighthouse.png" alt=" FAQ page lighthouse audit score" style="max-width: 500px; width: 100%;">
+
+- 404 Page Lighthouse Score
+  - <img src="assets/docs/404-page-lighthouse.png" alt="404 page lighthouse audit score" style="max-width: 500px; width: 100%;">
 
 As shown in the extracts above, all pages have received high scores. The Discover Page has a lower performance score, but this was anticipated due to the information loading. Below are the issues raised by Lighthouse that were addressed to ensure high scores (see commit ref 191c4ae):
 - Select elements do not have associated label elements ('Search By' Mode Toggle)
@@ -132,36 +204,22 @@ This section documents the issues found during development and how each one was 
   </thead>
   <tbody>
     <tr>
-      <td>1. xxxx</td>
-      <td>xxxxx</td>
+      <td>(1) Broken 'Buy Tickets' Link</td>
+      <td>Where Skiddle API has web links to purchase tickets, the JavaScript is supposed to make this available and show the 'Buy Tickets' button. The button is showing but the link is broken and loads a 404 page.</td>
       <td>✔️ Fixed or ❌</td>
       <td>Fix: xxxx</td>
       <td>e.g b92dc9e</td>
     </tr>
     <tr>
-      <td>2. xxxx</td>
-      <td>xxxxx</td>
+      <td>(2) 'Read More' Cursor</td>
+      <td>On card containers for festival details, there is a 'Read More' option for lineup information. This button works but it's not showing a hand pointer / link cursor</td>
       <td>✔️ Fixed or ❌</td>
       <td>Fix: xxxx</td>
       <td>e.g b92dc9e</td>
     </tr>
     <tr>
-      <td>3. xxxx</td>
-      <td>xxxxx</td>
-      <td>✔️ Fixed or ❌</td>
-      <td>Fix: xxxx</td>
-      <td>e.g b92dc9e</td>
-    </tr>
-    <tr>
-      <td>4. xxxx</td>
-      <td>xxxxx</td>
-      <td>✔️ Fixed or ❌</td>
-      <td>Fix: xxxx</td>
-      <td>e.g b92dc9e</td>
-    </tr>
-    <tr>
-      <td>5. xxxx</td>
-      <td>xxxxx</td>
+      <td>(3) Large Placeholder Festival Posters</td>
+      <td>Some festival posters appear to have a placeholder given by Skiddle based on the use of the Skiddle logo. When this occurs the poster is much larger than the usual poster formatting. A screenshot of an example of this has been included below. The majority of festivals aren't impacted by this bug and does not impact the usability of the website.</td>
       <td>✔️ Fixed or ❌</td>
       <td>Fix: xxxx</td>
       <td>e.g b92dc9e</td>
@@ -169,6 +227,11 @@ This section documents the issues found during development and how each one was 
   </tbody>
 </table>
 
+
+
+<em>Screenshot of Bug 3:</em>
+
+<img src="assets/docs/poster-bug.png" alt="Screenshot of website detailing the poster bug" style="max-width: 500px; width: 100%;">
 
 <sub>[*Back to contents*](#contents)</sup>
 
