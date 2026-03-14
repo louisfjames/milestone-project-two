@@ -203,9 +203,9 @@ This section documents the issues found during development and how each one was 
     <tr>
       <td>(1) Broken 'Buy Tickets' Link</td>
       <td>Where Skiddle API has web links to purchase tickets, the JavaScript is supposed to make this available and show the 'Buy Tickets' button. The button is showing but the link is broken and loads a 404 page.</td>
-      <td>✔️ Fixed or ❌</td>
-      <td>Fix: xxxx</td>
-      <td>e.g b92dc9e</td>
+      <td>✔️ Fixed</td>
+      <td>Fix: The fix was achieved by removing event.tickets from the ticketURL assignment so the button now always uses event.link, ensuring a valid URL is passed to window.open().</td>
+      <td>ec551fc</td>
     </tr>
     <tr>
       <td>(2) 'Read More' Cursor</td>
