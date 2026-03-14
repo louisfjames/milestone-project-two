@@ -194,7 +194,7 @@ $(document).ready(function () {
             const $lineup = $("<p>") 
                 .html(lineupHTML); // The only way to allow css to work is to make the output html rather than text
 
-            const ticketURL = event.tickets || event.link;
+            const ticketURL = event.link;
 
             const $ticketsLink = $("<button>")
                 .addClass("event-button")
@@ -256,7 +256,7 @@ $(document).ready(function () {
 
                     let lineupHTML = `<strong>Headliners:</strong> ${visibleArtists}`; // Only want to use the first 10 artists on the lineup for the carousel due to formatting
 
-                    const ticketURL = event.tickets || event.link;
+                    const ticketURL = event.link;
                     const ticketButton = `
                         <button class="event-button" onclick="window.open('${ticketURL}', '_blank')">
                             ${event.tickets ? "Buy Tickets" : "Check Tickets on Skiddle"}
@@ -376,7 +376,7 @@ $(document).ready(function () {
                 const $lineup = $("<p>")
                     .html(lineupHTML);
 
-                const ticketURL = event.tickets || event.link;
+                const ticketURL = event.link;
 
                 const $ticketsLink = $("<button>")
                     .addClass("event-button")
@@ -477,7 +477,7 @@ $(document).ready(function () {
                 const $lineup = $("<p>")
                     .html(lineupHTML);
 
-                const ticketURL = event.tickets || event.link;
+                const ticketURL = event.link;
 
                 const $ticketsLink = $("<button>")
                     .addClass("event-button")
