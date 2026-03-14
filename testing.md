@@ -210,9 +210,9 @@ This section documents the issues found during development and how each one was 
     <tr>
       <td>(2) 'Read More' Cursor</td>
       <td>On card containers for festival details, there is a 'Read More' option for lineup information. This button works but it's not showing a hand pointer / link cursor</td>
-      <td>✔️ Fixed or ❌</td>
-      <td>Fix: xxxx</td>
-      <td>e.g b92dc9e</td>
+      <td>✔️ Fixed</td>
+      <td>The update was made by using the existing .read-more-link:hover CSS rule so the element now displays a pointer cursor on hover, making its interactive behaviour clear.</td>
+      <td>e0cbdda</td>
     </tr>
     <tr>
       <td>(3) Large Placeholder Festival Posters</td>
@@ -223,7 +223,6 @@ This section documents the issues found during development and how each one was 
     </tr>
   </tbody>
 </table>
-
 
 
 <em>Screenshot of Bug 3:</em>
