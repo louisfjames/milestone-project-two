@@ -299,6 +299,7 @@ body {
 }
 
 .read-more-link:hover {
+    cursor: pointer;
     font-weight: bold;
 }
 
